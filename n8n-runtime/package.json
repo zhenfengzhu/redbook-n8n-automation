@@ -1,0 +1,11 @@
+﻿{
+  "name": "local-n8n-runtime",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "n8n start"
+  },
+  "dependencies": {
+    "n8n": "2.27.0"
+  }
+}
