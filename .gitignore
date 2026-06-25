@@ -9,3 +9,5 @@ n8n-runtime/.npm-cache/
 n8n-runtime/data/
 n8n-runtime/*.log
 data/
+__pycache__/
+*.pyc
