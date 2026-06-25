@@ -33,6 +33,26 @@ cd D:\AUnityProject\RedBook\n8n-runtime
 .\stop-n8n.ps1
 ```
 
+## Crawl FEDIAF
+
+The crawler reads FEDIAF / EuropeanPetFood sitemap pages, respects the site's `Crawl-delay`, and writes Markdown plus a JSON index.
+
+Fetch the first 5 pages:
+
+```powershell
+cd D:\AUnityProject\RedBook
+python scripts\fediaf_crawler.py --limit 5
+```
+
+Fetch core pet food and self-regulation pages:
+
+```powershell
+cd D:\AUnityProject\RedBook
+python scripts\fediaf_crawler.py --contains self-regulation --contains pet-food-facts --limit 12 --out data\fediaf-core
+```
+
+Outputs are written under `data/`, which is ignored by Git.
+
 ## Notes
 
 - Docker is not installed on this machine, so this setup uses Node/npm.

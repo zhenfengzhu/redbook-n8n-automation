@@ -8,3 +8,4 @@ n8n-runtime/node_modules/
 n8n-runtime/.npm-cache/
 n8n-runtime/data/
 n8n-runtime/*.log
+data/
