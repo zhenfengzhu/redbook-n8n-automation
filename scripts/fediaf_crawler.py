@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
+import sys
 import time
 import urllib.parse
 import urllib.request
@@ -17,6 +19,10 @@ from xml.etree import ElementTree
 USER_AGENT = "RedBookAutomationCrawler/1.0 (+local research; respectful crawl)"
 DEFAULT_START_URL = "https://www.fediaf.org/"
 
+for stream in (sys.stdout, sys.stderr):
+    if hasattr(stream, "reconfigure"):
+        stream.reconfigure(encoding="utf-8", errors="replace")
+
 
 @dataclass
 class Page:
@@ -24,6 +30,23 @@ class Page:
     title: str
     text: str
     pdf_links: list[str]
+
+
+class RateLimiter:
+    def __init__(self, delay_seconds: int) -> None:
+        self.delay_seconds = max(0, delay_seconds)
+        self._last_request_at = 0.0
+
+    def wait(self) -> None:
+        if self.delay_seconds <= 0:
+            return
+        elapsed = time.monotonic() - self._last_request_at
+        remaining = self.delay_seconds - elapsed
+        if remaining > 0:
+            time.sleep(remaining)
+
+    def mark(self) -> None:
+        self._last_request_at = time.monotonic()
 
 
 class ContentParser(HTMLParser):
@@ -129,6 +152,14 @@ def fetch(url: str, timeout: int = 30) -> tuple[str, str, str]:
         return text, response.geturl(), content_type
 
 
+def fetch_binary(url: str, timeout: int = 90) -> tuple[bytes, str, str]:
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        content_type = response.headers.get("Content-Type", "")
+        raw = response.read()
+        return raw, response.geturl(), content_type
+
+
 def get_crawl_delay(site_url: str) -> int:
     parsed = urllib.parse.urlparse(site_url)
     robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
@@ -155,6 +186,13 @@ def parse_sitemap_locations(xml_text: str) -> list[str]:
     return locations
 
 
+def normalize_page_url(url: str) -> str:
+    parsed = urllib.parse.urlparse(url)
+    if parsed.path.startswith("/_/"):
+        parsed = parsed._replace(path=parsed.path[2:])
+    return urllib.parse.urlunparse(parsed)
+
+
 def collect_urls(start_url: str) -> list[str]:
     _, final_url, _ = fetch(start_url)
     parsed = urllib.parse.urlparse(final_url)
@@ -174,6 +212,7 @@ def collect_urls(start_url: str) -> list[str]:
     unique_urls = []
     seen = set()
     for url in urls:
+        url = normalize_page_url(url)
         parsed_url = urllib.parse.urlparse(url)
         if parsed_url.netloc:
             allowed_hosts.add(parsed_url.netloc)
@@ -236,38 +275,168 @@ def write_page(out_dir: Path, page: Page) -> dict[str, object]:
     }
 
 
+def pdf_filename(url: str, used_names: set[str]) -> str:
+    parsed = urllib.parse.urlparse(url)
+    name = Path(urllib.parse.unquote(parsed.path)).name
+    if not name.lower().endswith(".pdf"):
+        name = f"{safe_filename(url, 'document')}.pdf"
+    name = re.sub(r"[^a-zA-Z0-9._-]+", "-", name).strip("-._") or "document.pdf"
+    if name not in used_names:
+        used_names.add(name)
+        return name
+
+    stem = Path(name).stem
+    suffix = Path(name).suffix or ".pdf"
+    digest = hashlib.sha1(url.encode("utf-8")).hexdigest()[:8]
+    unique_name = f"{stem}-{digest}{suffix}"
+    used_names.add(unique_name)
+    return unique_name
+
+
+def pdf_url_candidates(url: str) -> list[str]:
+    parsed = urllib.parse.urlparse(url)
+    candidates = [url]
+
+    marker = "/wp-content/uploads/"
+    if marker in parsed.path and not parsed.path.startswith(marker):
+        path = parsed.path[parsed.path.index(marker) :]
+        candidates.append(urllib.parse.urlunparse(parsed._replace(path=path)))
+
+    if parsed.path.startswith("/uploads/"):
+        candidates.append(urllib.parse.urlunparse(parsed._replace(path=f"/wp-content{parsed.path}")))
+
+    if parsed.netloc in {"fediaf.org", "www.fediaf.org"} and parsed.path.startswith("/images/"):
+        name = Path(urllib.parse.unquote(parsed.path)).name
+        for month in ("02", "03"):
+            candidates.append(f"https://europeanpetfood.org/wp-content/uploads/2022/{month}/{urllib.parse.quote(name)}")
+
+    unique_candidates = []
+    seen = set()
+    for candidate in candidates:
+        if candidate not in seen:
+            seen.add(candidate)
+            unique_candidates.append(candidate)
+    return unique_candidates
+
+
+def download_pdfs(
+    out_dir: Path,
+    page_records: list[dict[str, object]],
+    limiter: RateLimiter,
+) -> list[dict[str, object]]:
+    pdf_dir = out_dir / "pdfs"
+    pdf_dir.mkdir(parents=True, exist_ok=True)
+
+    sources_by_pdf: dict[str, list[str]] = {}
+    for record in page_records:
+        page_url = str(record["url"])
+        for pdf_url in record.get("pdf_links", []):
+            sources_by_pdf.setdefault(str(pdf_url), []).append(page_url)
+
+    used_names: set[str] = set()
+    results: list[dict[str, object]] = []
+    total = len(sources_by_pdf)
+
+    for position, (pdf_url, source_pages) in enumerate(sorted(sources_by_pdf.items()), start=1):
+        target_name = pdf_filename(pdf_url, used_names)
+        target_path = pdf_dir / target_name
+        result: dict[str, object] = {
+            "url": pdf_url,
+            "source_pages": sorted(set(source_pages)),
+            "path": str(target_path),
+            "status": "pending",
+            "bytes": 0,
+            "downloaded_at": None,
+        }
+        try:
+            last_error: Exception | None = None
+            fetched_url = pdf_url
+            for candidate_url in pdf_url_candidates(pdf_url):
+                try:
+                    limiter.wait()
+                    raw, final_url, content_type = fetch_binary(candidate_url)
+                    limiter.mark()
+                    fetched_url = candidate_url
+                    break
+                except Exception as exc:
+                    limiter.mark()
+                    last_error = exc
+            else:
+                raise last_error or RuntimeError("No PDF URL candidates were available.")
+
+            target_path.write_bytes(raw)
+            result.update(
+                {
+                    "final_url": final_url,
+                    "fetched_url": fetched_url,
+                    "content_type": content_type,
+                    "status": "downloaded",
+                    "bytes": len(raw),
+                    "downloaded_at": datetime.now(timezone.utc).isoformat(),
+                }
+            )
+            print(f"[pdf {position}/{total}] {pdf_url} -> {target_path}", flush=True)
+        except Exception as exc:
+            result.update({"status": "failed", "error": str(exc)})
+            print(f"[pdf {position}/{total}] FAILED {pdf_url}: {exc}", flush=True)
+        results.append(result)
+
+        pdf_index_path = out_dir / "pdf-index.json"
+        pdf_index_path.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    return results
+
+
 def crawl(
     start_url: str,
     out_dir: Path,
     limit: int | None,
     delay: int | None,
     contains: list[str] | None,
+    download_pdf_files: bool,
 ) -> list[dict[str, object]]:
     out_dir.mkdir(parents=True, exist_ok=True)
     urls = collect_urls(start_url)
     if contains:
         urls = [url for url in urls if any(fragment in url for fragment in contains)]
-    if limit:
+    if limit is not None:
         urls = urls[:limit]
 
     _, final_url, _ = fetch(start_url)
     crawl_delay = delay if delay is not None else get_crawl_delay(final_url)
+    limiter = RateLimiter(crawl_delay)
     index: list[dict[str, object]] = []
 
     for position, url in enumerate(urls, start=1):
-        if position > 1:
-            time.sleep(crawl_delay)
-        html, final_page_url, content_type = fetch(url)
-        if "text/html" not in content_type.lower():
-            continue
-        page = parse_page(final_page_url, html)
-        record = write_page(out_dir, page)
-        record["position"] = position
-        index.append(record)
-        print(f"[{position}/{len(urls)}] {page.title} -> {record['markdown']}")
+        try:
+            limiter.wait()
+            html, final_page_url, content_type = fetch(url)
+            limiter.mark()
+            if "text/html" not in content_type.lower():
+                continue
+            page = parse_page(final_page_url, html)
+            record = write_page(out_dir, page)
+            record["position"] = position
+            record["status"] = "crawled"
+            index.append(record)
+            print(f"[page {position}/{len(urls)}] {page.title} -> {record['markdown']}", flush=True)
+        except Exception as exc:
+            record = {
+                "url": url,
+                "position": position,
+                "status": "failed",
+                "error": str(exc),
+                "fetched_at": datetime.now(timezone.utc).isoformat(),
+            }
+            index.append(record)
+            print(f"[page {position}/{len(urls)}] FAILED {url}: {exc}", flush=True)
 
     index_path = out_dir / "index.json"
     index_path.write_text(json.dumps(index, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    if download_pdf_files:
+        download_pdfs(out_dir, index, limiter)
+
     return index
 
 
@@ -276,7 +445,9 @@ def main() -> None:
     parser.add_argument("--start-url", default=DEFAULT_START_URL)
     parser.add_argument("--out", default="data/fediaf")
     parser.add_argument("--limit", type=int, default=5)
+    parser.add_argument("--all", action="store_true", help="Crawl every URL found in the sitemap.")
     parser.add_argument("--delay", type=int, default=None, help="Override robots Crawl-delay in seconds.")
+    parser.add_argument("--download-pdfs", action="store_true", help="Download PDFs linked from crawled pages.")
     parser.add_argument(
         "--contains",
         action="append",
@@ -284,13 +455,15 @@ def main() -> None:
         help="Only crawl URLs containing this text. Can be used multiple times.",
     )
     args = parser.parse_args()
+    limit = None if args.all else args.limit
 
     records = crawl(
         start_url=args.start_url,
         out_dir=Path(args.out),
-        limit=args.limit,
+        limit=limit,
         delay=args.delay,
         contains=args.contains,
+        download_pdf_files=args.download_pdfs,
     )
     print(f"Saved {len(records)} pages to {Path(args.out).resolve()}")
 

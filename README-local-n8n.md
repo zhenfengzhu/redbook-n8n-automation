@@ -51,7 +51,19 @@ cd D:\AUnityProject\RedBook
 python scripts\fediaf_crawler.py --contains self-regulation --contains pet-food-facts --limit 12 --out data\fediaf-core
 ```
 
-Outputs are written under `data/`, which is ignored by Git.
+Fetch the full site and download PDFs linked from crawled pages:
+
+```powershell
+cd D:\AUnityProject\RedBook
+python scripts\fediaf_crawler.py --all --download-pdfs --out data\fediaf-full
+```
+
+Outputs are written under `data/`, which is ignored by Git:
+
+- `pages/`: Markdown copy of each crawled page.
+- `index.json`: page crawl index, including source URL, output path, fetch time, and PDF links found on each page.
+- `pdfs/`: downloaded PDF files.
+- `pdf-index.json`: PDF download index, including source pages, output path, status, and file size.
 
 ## Notes
 
