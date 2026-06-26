@@ -65,6 +65,66 @@ Outputs are written under `data/`, which is ignored by Git:
 - `pdfs/`: downloaded PDF files.
 - `pdf-index.json`: PDF download index, including source pages, output path, status, and file size.
 
+## Translate FEDIAF to Chinese
+
+Install the local translation dependencies:
+
+```powershell
+python -m pip install --user argostranslate pymupdf
+```
+
+Install the Argos translation packages needed for this crawl. English pages/PDFs use `en -> zh`; known non-English PDFs use `lt/pl/ro/sl/hu -> en -> zh`:
+
+```powershell
+@'
+import argostranslate.package
+
+wanted = [
+    ("en", "zh"),
+    ("lt", "en"),
+    ("pl", "en"),
+    ("ro", "en"),
+    ("sl", "en"),
+    ("hu", "en"),
+]
+
+argostranslate.package.update_package_index()
+packages = argostranslate.package.get_available_packages()
+for source, target in wanted:
+    package = next((item for item in packages if item.from_code == source and item.to_code == target), None)
+    if package is None:
+        raise SystemExit(f"Missing package {source}->{target}")
+    package.install()
+'@ | python -
+```
+
+Translate crawled pages and extracted PDF text:
+
+```powershell
+cd D:\AUnityProject\RedBook
+python scripts\translate_fediaf_to_zh.py --pages --pdfs --out data\fediaf-full-zh
+```
+
+Useful resume commands:
+
+```powershell
+python scripts\translate_fediaf_to_zh.py --pages --out data\fediaf-full-zh
+python scripts\translate_fediaf_to_zh.py --pdfs --out data\fediaf-full-zh
+```
+
+Outputs are written under `data/fediaf-full-zh/`:
+
+- `pages/`: translated Markdown pages.
+- `pdfs/`: translated Markdown generated from text extracted out of downloaded PDFs.
+- `translation-index.json`: translation run index.
+- `translation-cache.sqlite3`: local translation cache used for resume and duplicate PDF content.
+
+PDF notes:
+
+- Output is machine translation and should be reviewed before publication, especially nutrition terms and non-English PDFs translated through English.
+- The script creates translated Markdown from extracted PDF text; it does not edit or recreate the original PDF layout.
+- Image-only or scanned PDF pages can have no extractable text. Those pages are recorded as `未抽取到可翻译文本。`; add OCR if full image-page translation is required.
+
 ## Notes
 
 - Docker is not installed on this machine, so this setup uses Node/npm.
