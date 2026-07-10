@@ -1,0 +1,55 @@
+{
+  "name": "RedBook Baserow Topic Sync Smoke",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "6210b2df-83a0-493a-a56d-f6d9b5f6e001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\sync_baserow_topics.py\""
+      },
+      "id": "23f8c4f4-8987-4bd1-92d9-cad5f19de002",
+      "name": "Baserow Sync Dry Run",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        560,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Baserow Sync Dry Run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai"
+  },
+  "active": false,
+  "versionId": "dd0d205b-1715-4de6-b9ef-c1380daa9d3e",
+  "id": "RedBookBaserowTopicSyncSmoke",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

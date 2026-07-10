@@ -1,0 +1,54 @@
+{
+  "name": "RedBook Topic Database Upsert Smoke",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "2fd742c1-5ff6-46c2-8a33-82d522d0e001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\upsert_topic_database.py\""
+      },
+      "id": "30d09488-7bb2-4996-b0a4-8124539ce002",
+      "name": "Upsert Local Topic Database",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        560,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Upsert Local Topic Database",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "a6067b0c-6c9d-49f3-8fd7-70e1890f5b41",
+  "id": "RedBookTopicDatabaseUpsertSmoke",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

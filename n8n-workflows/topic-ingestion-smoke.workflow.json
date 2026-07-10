@@ -1,0 +1,54 @@
+{
+  "name": "RedBook Topic Ingestion Smoke",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0f1e0a93-7d7e-4f5d-b4af-1d1c2364e001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\n8n_topic_ingestion_smoke.py\""
+      },
+      "id": "b953cd32-ef58-4a65-80f7-c921e8fa70e9",
+      "name": "Generate Local Topic Summary",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        560,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Generate Local Topic Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "5e9024d5-9862-45b0-b7b4-1c7d14560214",
+  "id": "RedBookTopicIngestionSmoke",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

@@ -17,6 +17,7 @@ $env:N8N_PORT = "5678"
 $env:N8N_PROTOCOL = "http"
 $env:N8N_USER_FOLDER = $DataDir
 $env:N8N_SECURE_COOKIE = "false"
+$env:NODES_EXCLUDE = "[]"
 $env:GENERIC_TIMEZONE = "Asia/Shanghai"
 $env:TZ = "Asia/Shanghai"
 

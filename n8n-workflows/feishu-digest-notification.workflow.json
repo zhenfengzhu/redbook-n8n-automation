@@ -1,0 +1,80 @@
+{
+  "name": "RedBook Feishu Digest Notification",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "3f2bb2e2-d330-4371-9186-22840dafe001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\generate_daily_digest.py\""
+      },
+      "id": "da61d80d-5e6e-4595-b82d-8a58bf18e002",
+      "name": "Generate Daily Digest",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\send_feishu_digest.py\" --send"
+      },
+      "id": "aab5cc4b-6afa-47d1-8fb1-40296767e003",
+      "name": "Send Feishu Digest",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        820,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Generate Daily Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Daily Digest": {
+      "main": [
+        [
+          {
+            "node": "Send Feishu Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai"
+  },
+  "active": false,
+  "versionId": "0d7f905a-f41d-41c7-a4e6-c2e4de570431",
+  "id": "RedBookFeishuDigestNotification",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

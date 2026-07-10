@@ -1,0 +1,1777 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>猫狗禁食黑名单｜小红书图文版</title>
+  <style>
+    :root {
+      --red: #e83f3f;
+      --red-deep: #b91924;
+      --ink: #221713;
+      --muted: #6f5c55;
+      --paper: #fff8f4;
+      --cream: #fffdf8;
+      --line: #efcfc5;
+      --green: #516c45;
+      --yellow: #ffd96b;
+      --blue: #5d82c1;
+      --shadow: 0 18px 42px rgba(111, 47, 37, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 16px 16px, rgba(232, 63, 63, 0.12) 0 2px, transparent 3px),
+        linear-gradient(180deg, #fff6f1 0%, #ffece6 100%);
+      background-size: 28px 28px, auto;
+      color: var(--ink);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body {
+      padding: 32px;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 28px;
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    [data-move-id] {
+      --edit-x: 0px;
+      --edit-y: 0px;
+      --edit-scale: 1;
+      transform-origin: center;
+    }
+
+    [data-move-id]:not(.p1):not(.p2):not(.p3):not(.p4) {
+      transform: translate(var(--edit-x), var(--edit-y)) scale(var(--edit-scale));
+    }
+
+    .export-stage {
+      position: fixed;
+      left: -12000px;
+      top: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background: #fff;
+    }
+
+    .export-stage .slide {
+      display: block;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .export-stage .food-card,
+    .export-stage .danger-item,
+    .export-stage .risk-row,
+    .export-stage .rule-card,
+    .export-stage .quick-grid span,
+    .export-stage .note-box {
+      background: #fff !important;
+    }
+
+    .slide {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 1px solid rgba(232, 63, 63, 0.16);
+      border-radius: 8px;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(232, 63, 63, 0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(232, 63, 63, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(180deg, transparent 0%, #000 20%, #000 86%, transparent 100%);
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -92px;
+      top: -80px;
+      z-index: -1;
+      border-radius: 50%;
+      background: rgba(255, 217, 107, 0.68);
+    }
+
+    .inner {
+      position: absolute;
+      inset: 34px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 40px;
+      margin-bottom: 18px;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--red-deep);
+    }
+
+    .pill,
+    .page-num,
+    .stamp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid currentColor;
+      border-radius: 999px;
+      background: #fff;
+      white-space: nowrap;
+    }
+
+    .pill {
+      min-height: 36px;
+      padding: 0 15px;
+      box-shadow: 4px 4px 0 rgba(232, 63, 63, 0.14);
+    }
+
+    .page-num {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      font-size: 16px;
+      color: #fff;
+      border-color: var(--red);
+      background: var(--red);
+      box-shadow: 4px 4px 0 rgba(185, 25, 36, 0.2);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 56px;
+      line-height: 1.02;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      font-size: 43px;
+      line-height: 1.1;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: 24px;
+      line-height: 1.14;
+      font-weight: 950;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin-top: 14px;
+      font-size: 23px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .red {
+      color: var(--red);
+    }
+
+    .marker {
+      position: relative;
+      display: inline;
+      z-index: 0;
+    }
+
+    .marker::after {
+      content: "";
+      position: absolute;
+      left: -3px;
+      right: -3px;
+      bottom: 4px;
+      height: 16px;
+      z-index: -1;
+      background: rgba(255, 217, 107, 0.86);
+      transform: rotate(-1.4deg);
+    }
+
+    .cover .inner {
+      inset: 34px 31px 30px;
+    }
+
+    .cover-title {
+      margin-top: 4px;
+      max-width: 455px;
+    }
+
+    .cover-title .small {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 32px;
+      color: var(--red);
+    }
+
+    .cover-title .big {
+      display: block;
+      font-size: 68px;
+      line-height: 0.98;
+      font-weight: 950;
+    }
+
+    .cover-sub {
+      margin-top: 18px;
+      width: fit-content;
+      max-width: 100%;
+      padding: 10px 14px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: var(--yellow);
+      font-size: 23px;
+      line-height: 1.25;
+      font-weight: 900;
+      box-shadow: 5px 5px 0 rgba(34, 23, 19, 0.13);
+    }
+
+    .cover-collage {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      margin-top: 24px;
+    }
+
+    .photo {
+      position: absolute;
+      overflow: hidden;
+      border: 4px solid #fff;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 16px 28px rgba(66, 28, 20, 0.18);
+    }
+
+    .photo img,
+    .hero-img img,
+    .food-card img,
+    .mini-img img,
+    .photo .export-image-replacement,
+    .hero-img .export-image-replacement,
+    .mini-img .export-image-replacement {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .export-image-replacement {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .photo span {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--red-deep);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .p1 {
+      left: 0;
+      top: 4px;
+      width: 45%;
+      height: 39%;
+      transform: translate(var(--edit-x), var(--edit-y)) scale(var(--edit-scale)) rotate(-4deg);
+    }
+
+    .p2 {
+      right: 4px;
+      top: 18px;
+      width: 49%;
+      height: 34%;
+      transform: translate(var(--edit-x), var(--edit-y)) scale(var(--edit-scale)) rotate(3deg);
+    }
+
+    .p3 {
+      left: 7%;
+      top: 41%;
+      width: 42%;
+      height: 33%;
+      transform: translate(var(--edit-x), var(--edit-y)) scale(var(--edit-scale)) rotate(2deg);
+    }
+
+    .p4 {
+      right: 0;
+      top: 45%;
+      width: 47%;
+      height: 36%;
+      transform: translate(var(--edit-x), var(--edit-y)) scale(var(--edit-scale)) rotate(-3deg);
+    }
+
+    .save-strip {
+      position: absolute;
+      left: 7%;
+      right: 7%;
+      bottom: 2px;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--red-deep);
+      font-size: 24px;
+      font-weight: 950;
+      box-shadow: 5px 5px 0 rgba(232, 63, 63, 0.18);
+    }
+
+    .note-box {
+      margin-top: 26px;
+      padding: 22px;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 6px 6px 0 rgba(232, 63, 63, 0.16);
+    }
+
+    .note-box p {
+      font-size: 28px;
+      line-height: 1.55;
+      font-weight: 900;
+    }
+
+    .big-warning {
+      margin-top: auto;
+      padding: 18px;
+      border-radius: 8px;
+      background: var(--red);
+      color: #fff;
+      font-size: 39px;
+      line-height: 1.08;
+      font-weight: 950;
+      text-align: center;
+      box-shadow: 6px 6px 0 rgba(185, 25, 36, 0.25);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .quick-grid span,
+    .rule-card {
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 4px 4px 0 rgba(232, 63, 63, 0.1);
+    }
+
+    .quick-grid span {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      color: var(--red-deep);
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 950;
+    }
+
+    .rule-card {
+      margin-top: auto;
+      padding: 18px 20px;
+      color: var(--green);
+      font-size: 24px;
+      line-height: 1.28;
+      font-weight: 950;
+    }
+
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 22px;
+      min-height: 0;
+    }
+
+    .food-card {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 14px;
+      align-items: center;
+      min-height: 142px;
+      padding: 12px;
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 5px 5px 0 rgba(232, 63, 63, 0.1);
+    }
+
+    .food-card img {
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      border: 3px solid #fff;
+      box-shadow: 0 10px 18px rgba(66, 28, 20, 0.13);
+    }
+
+    .food-card .export-image-replacement {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      border: 3px solid #fff;
+      box-shadow: 0 10px 18px rgba(66, 28, 20, 0.13);
+    }
+
+    .food-card p {
+      margin-top: 8px;
+      font-size: 19px;
+      line-height: 1.35;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .hero-img {
+      position: relative;
+      overflow: hidden;
+      margin-top: 22px;
+      height: 265px;
+      border: 4px solid #fff;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 16px 30px rgba(66, 28, 20, 0.18);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag-cloud span {
+      padding: 9px 12px;
+      border: 1.5px solid var(--red);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--red-deep);
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 rgba(232, 63, 63, 0.12);
+    }
+
+    .caption {
+      margin-top: 18px;
+      padding-left: 16px;
+      border-left: 5px solid var(--red);
+      font-size: 24px;
+      line-height: 1.42;
+      font-weight: 850;
+      color: var(--ink);
+    }
+
+    .mini-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .mini-img {
+      overflow: hidden;
+      height: 185px;
+      border: 4px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 14px 24px rgba(66, 28, 20, 0.16);
+      background: #fff;
+    }
+
+    .danger-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .danger-item {
+      min-height: 76px;
+      padding: 12px 10px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1.5px solid var(--line);
+      font-size: 19px;
+      line-height: 1.22;
+      font-weight: 900;
+      box-shadow: 3px 3px 0 rgba(232, 63, 63, 0.1);
+    }
+
+    .why {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 750;
+    }
+
+    .risk-rows {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .risk-row {
+      display: grid;
+      grid-template-columns: 94px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 88px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1.5px solid var(--line);
+      background: #fff;
+      box-shadow: 4px 4px 0 rgba(232, 63, 63, 0.1);
+    }
+
+    .risk-row strong {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--red);
+      font-size: 19px;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .risk-row span {
+      font-size: 19px;
+      line-height: 1.32;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .bottom-tip {
+      margin-top: auto;
+      padding: 13px 14px;
+      border: 1.5px solid rgba(81, 108, 69, 0.35);
+      border-radius: 8px;
+      background: rgba(81, 108, 69, 0.1);
+      color: var(--green);
+      font-size: 18px;
+      line-height: 1.32;
+      font-weight: 900;
+    }
+
+    .credits {
+      max-width: 1380px;
+      margin: 18px auto 0;
+      color: rgba(34, 23, 19, 0.58);
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .edit-ui {
+      position: fixed;
+      z-index: 1000;
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+    }
+
+    .edit-launcher {
+      top: 18px;
+      right: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .edit-launcher button,
+    .edit-toolbar button {
+      min-height: 34px;
+      border: 1px solid rgba(232, 63, 63, 0.38);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--red-deep);
+      font-size: 14px;
+      font-weight: 850;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 rgba(232, 63, 63, 0.12);
+    }
+
+    .edit-launcher button {
+      padding: 0 16px;
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .edit-launcher [data-export-all] {
+      background: #fff;
+      color: var(--red-deep);
+      border-color: rgba(232, 63, 63, 0.38);
+    }
+
+    .edit-toolbar {
+      top: 14px;
+      left: 50%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: min(1120px, calc(100vw - 28px));
+      padding: 10px 12px;
+      border: 1px solid rgba(232, 63, 63, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.96);
+      box-shadow: 0 14px 34px rgba(111, 47, 37, 0.14);
+      transform: translateX(-50%);
+      backdrop-filter: blur(10px);
+    }
+
+    .edit-toolbar[hidden],
+    body.exporting .edit-ui {
+      display: none !important;
+    }
+
+    .edit-toolbar strong {
+      margin-right: 4px;
+      color: var(--ink);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .edit-toolbar button {
+      padding: 0 10px;
+    }
+
+    .edit-toolbar .danger {
+      border-color: rgba(185, 25, 36, 0.48);
+      background: rgba(232, 63, 63, 0.08);
+    }
+
+    .edit-selected-label {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .export-status {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    body.editor-on {
+      padding-top: 106px;
+    }
+
+    body.editor-on .edit-launcher {
+      display: none;
+    }
+
+    body.editor-on [contenteditable="true"] {
+      outline: 1px dashed rgba(93, 130, 193, 0.48);
+      outline-offset: 3px;
+      cursor: text;
+    }
+
+    body.editor-on [data-move-id] {
+      cursor: move;
+    }
+
+    body.editor-on [contenteditable="true"] {
+      cursor: text;
+    }
+
+    .edit-selected {
+      outline: 3px solid var(--blue) !important;
+      outline-offset: 4px !important;
+    }
+
+    .edit-deleted {
+      display: none !important;
+    }
+
+    @media (max-width: 740px) {
+      body {
+        padding: 18px;
+      }
+
+      main {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .edit-toolbar {
+        left: 14px;
+        right: 14px;
+        width: auto;
+        flex-wrap: wrap;
+        transform: none;
+      }
+
+      body.editor-on {
+        padding-top: 158px;
+      }
+
+      .edit-launcher {
+        left: 18px;
+        right: 18px;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .inner {
+        inset: 24px;
+      }
+
+      .topline {
+        margin-bottom: 12px;
+        font-size: 14px;
+      }
+
+      .pill {
+        min-height: 30px;
+        padding: 0 11px;
+      }
+
+      .page-num {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 43px;
+      }
+
+      h2 {
+        font-size: 34px;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+
+      .cover-title .small {
+        font-size: 25px;
+      }
+
+      .cover-title .big {
+        font-size: 52px;
+      }
+
+      .cover-sub {
+        font-size: 18px;
+      }
+
+      .note-box {
+        margin-top: 18px;
+        padding: 16px;
+      }
+
+      .note-box p {
+        font-size: 21px;
+      }
+
+      .lead {
+        font-size: 18px;
+      }
+
+      .big-warning {
+        font-size: 29px;
+      }
+
+      .food-card {
+        grid-template-columns: 104px 1fr;
+        min-height: 118px;
+        gap: 10px;
+      }
+
+      .food-card p,
+      .caption,
+      .risk-row span {
+        font-size: 16px;
+      }
+
+      .quick-grid span {
+        min-height: 56px;
+        font-size: 16px;
+      }
+
+      .rule-card {
+        font-size: 18px;
+      }
+
+      .hero-img {
+        height: 210px;
+      }
+
+      .mini-img {
+        height: 145px;
+      }
+
+      .danger-item {
+        font-size: 16px;
+      }
+
+      .why {
+        font-size: 13px;
+      }
+
+      .risk-row {
+        grid-template-columns: 78px 1fr;
+      }
+
+      .risk-row strong {
+        font-size: 16px;
+      }
+    }
+
+    @page {
+      size: 1080px 1440px;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      main {
+        display: block;
+        max-width: none;
+      }
+
+      .slide {
+        width: 1080px;
+        height: 1440px;
+        page-break-after: always;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .credits {
+        display: none;
+      }
+    }
+
+    body.exporting {
+      width: var(--native-export-width, 1080px);
+      height: var(--native-export-height, 1440px);
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    body.exporting.editor-on {
+      padding: 0;
+    }
+
+    body.exporting main {
+      display: block;
+      width: var(--native-export-width, 1080px);
+      max-width: none;
+      margin: 0;
+    }
+
+    body.exporting .slide {
+      display: none;
+      width: var(--native-export-width, 1080px);
+      height: var(--native-export-height, 1440px);
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    body.exporting .slide.is-export {
+      display: block;
+    }
+
+    body.exporting .credits {
+      display: none;
+    }
+  </style>
+</head>
+<body class="">
+  <div class="edit-launcher edit-ui">
+    <button type="button" data-export-all="">原生导出小红书图片</button>
+    <button type="button" data-editor-open="">编辑文字/位置</button>
+  </div>
+  <div class="edit-toolbar edit-ui" hidden="">
+    <strong>编辑模式</strong>
+    <button type="button" data-editor-close="">预览</button>
+    <button type="button" data-edit-command="left">左移</button>
+    <button type="button" data-edit-command="right">右移</button>
+    <button type="button" data-edit-command="up">上移</button>
+    <button type="button" data-edit-command="down">下移</button>
+    <button type="button" data-edit-command="bigger">放大</button>
+    <button type="button" data-edit-command="smaller">缩小</button>
+    <button type="button" data-edit-command="resetSelected">重置选中</button>
+    <button type="button" class="danger" data-edit-command="deleteSelected">删除选中</button>
+    <button type="button" data-edit-command="nativeExport">原生导出图片</button>
+    <button type="button" data-edit-command="download">下载当前HTML</button>
+    <button type="button" class="danger" data-edit-command="resetAll">清空修改</button>
+    <span class="export-status" data-export-status="">正在连接原生导出服务...</span>
+    <span class="edit-selected-label" data-edit-selected="">未选择元素</span>
+  </div>
+  <main aria-label="猫狗禁食黑名单小红书图文">
+    <article class="slide cover">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-edit-id="text-0" data-move-id="move-0" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">新手养宠必存</span>
+          <span class="page-num" data-edit-id="text-1" data-move-id="move-1" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">封面</span>
+        </div>
+        <h1 class="cover-title" data-edit-id="text-2" data-move-id="move-2" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <span class="small">猫狗不能吃清单</span>
+          <span class="big">这 7 类<br>别顺手喂</span>
+        </h1>
+        <p class="cover-sub" data-edit-id="text-3" data-move-id="move-3" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">不是矫情，是真的有急诊风险</p>
+        <div class="cover-collage" aria-label="危险食物拼贴" data-move-id="move-4" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <figure class="photo p1" data-move-id="move-5" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-gum.png" alt="无糖口香糖和糖果">
+            <span data-edit-id="text-4" data-move-id="move-68" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">木糖醇</span>
+          </figure>
+          <figure class="photo p2" data-move-id="move-6" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-grapes-raisins.png" alt="葡萄和葡萄干">
+            <span data-edit-id="text-5" data-move-id="move-69" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">葡萄干</span>
+          </figure>
+          <figure class="photo p3" data-move-id="move-7" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-chocolate.png" alt="巧克力和可可粉">
+            <span data-edit-id="text-6" data-move-id="move-70" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">巧克力</span>
+          </figure>
+          <figure class="photo p4" data-move-id="move-8" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-salty-fatty-bones.png" alt="熟骨头和高盐高脂食物">
+            <span data-edit-id="text-7" data-move-id="move-71" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">剩菜骨头</span>
+          </figure>
+          <div class="save-strip edit-deleted" data-edit-id="text-8" data-move-id="move-9" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">先收藏，再转给家里人</div>
+        </div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-edit-id="text-9" data-move-id="move-10" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">先记住一句话</span>
+          <span class="page-num" data-edit-id="text-10" data-move-id="move-11" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">01</span>
+        </div>
+        <h2 data-edit-id="text-11" data-move-id="move-12" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">人能吃，<br><span class="marker">不代表猫狗能吃</span></h2>
+        <div class="note-box" data-move-id="move-13" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <p data-edit-id="text-12" data-move-id="move-14" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;" class="">有些食物不是“拉肚子”这么简单，而是可能中毒、伤肾、贫血、堵塞，甚至进急诊。</p>
+        </div>
+        <p class="lead" data-edit-id="text-13" data-move-id="move-15" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">拿不准的食物，先别喂。尤其是零食、剩菜、甜品和带调味的食物。</p>
+        <div class="quick-grid" aria-label="高频误喂场景" data-move-id="move-16" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <span data-edit-id="text-14" data-move-id="move-17" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">零食包装上写“无糖”</span>
+          <span data-edit-id="text-15" data-move-id="move-18" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">餐桌剩菜有葱蒜</span>
+          <span data-edit-id="text-16" data-move-id="move-19" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">甜品里有巧克力</span>
+          <span data-edit-id="text-17" data-move-id="move-20" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">骨头熟了也不安全</span>
+        </div>
+        <div class="big-warning" data-edit-id="text-18" data-move-id="move-21" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">顺手一口，可能不是小事</div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-edit-id="text-19" data-move-id="move-22" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">最该警惕这 3 个</span>
+          <span class="page-num" data-edit-id="text-20" data-move-id="move-23" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">02</span>
+        </div>
+        <h2 data-edit-id="text-21" data-move-id="move-24" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">不是“少吃点没事”</h2>
+        <div class="food-grid">
+          <section class="food-card" data-move-id="move-25" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-gum.png" alt="无糖口香糖和糖果">
+            <div>
+              <h3 data-edit-id="text-22" data-move-id="move-26" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">木糖醇</h3>
+              <p data-edit-id="text-23" data-move-id="move-27" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">常见于无糖口香糖、无糖糖果、部分花生酱。对狗尤其危险，可能引起低血糖和肝损伤。</p>
+            </div>
+          </section>
+          <section class="food-card" data-move-id="move-28" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-grapes-raisins.png" alt="葡萄和葡萄干">
+            <div>
+              <h3 data-edit-id="text-24" data-move-id="move-29" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">葡萄/葡萄干</h3>
+              <p data-edit-id="text-25" data-move-id="move-30" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">葡萄干面包、麦片、果干零食也算。对狗可能伤肾，安全剂量不明确。</p>
+            </div>
+          </section>
+          <section class="food-card" data-move-id="move-31" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-chocolate.png" alt="巧克力和可可粉">
+            <div>
+              <h3 data-edit-id="text-26" data-move-id="move-32" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">巧克力</h3>
+              <p data-edit-id="text-27" data-move-id="move-33" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">黑巧、可可粉风险更高。可可碱和咖啡因会刺激心脏和神经系统。</p>
+            </div>
+          </section>
+        </div>
+        <div class="rule-card" data-edit-id="text-28" data-move-id="move-34" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">这 3 类不要试“安全剂量”：看见就收起来，误食就保留包装再咨询兽医。</div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-edit-id="text-29" data-move-id="move-35" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">厨房里的隐藏雷</span>
+          <span class="page-num" data-edit-id="text-30" data-move-id="move-36" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">03</span>
+        </div>
+        <h2 data-edit-id="text-31" data-move-id="move-37" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">葱、蒜、韭菜、香葱<br><span class="red">都别喂</span></h2>
+        <figure class="hero-img" data-move-id="move-38" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <img src="assets/xhs-foods-ai/ai-alliums.png" alt="葱蒜韭菜香葱">
+        </figure>
+        <p class="caption" data-edit-id="text-32" data-move-id="move-39" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">重点是：熟的也不行，粉末调味料也不行。</p>
+        <div class="tag-cloud" aria-label="也要避开的菜品" data-move-id="move-40" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <span data-edit-id="text-33" data-move-id="move-41" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">葱油饼</span>
+          <span data-edit-id="text-34" data-move-id="move-42" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">蒜蓉菜</span>
+          <span data-edit-id="text-35" data-move-id="move-43" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">洋葱炒肉</span>
+          <span data-edit-id="text-36" data-move-id="move-44" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">火锅汤</span>
+          <span data-edit-id="text-37" data-move-id="move-45" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">卤味</span>
+          <span data-edit-id="text-38" data-move-id="move-46" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">重口味剩菜</span>
+        </div>
+        <div class="rule-card" data-edit-id="text-39" data-move-id="move-47" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">配料表里看到葱粉、蒜粉、洋葱粉，直接 pass</div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-edit-id="text-40" data-move-id="move-48" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">看着安全</span>
+          <span class="page-num" data-edit-id="text-41" data-move-id="move-49" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">04</span>
+        </div>
+        <h2 data-edit-id="text-42" data-move-id="move-50" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;" class="">也别随便喂</h2>
+        <div class="mini-row" data-move-id="move-51" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <figure class="mini-img" data-move-id="move-52" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-wine-dough.png" alt="酒精甜品和生面团">
+          </figure>
+          <figure class="mini-img" data-move-id="move-53" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <img src="assets/xhs-foods-ai/ai-coffee-tea-macadamia.png" alt="咖啡茶和夏威夷果">
+          </figure>
+        </div>
+        <div class="danger-list" data-move-id="move-54" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <div class="danger-item" data-edit-id="text-43" data-move-id="move-55" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">酒精、酒心巧克力、含酒甜品<span class="why">不是宠物零食，别让它们舔</span></div>
+          <div class="danger-item" data-edit-id="text-44" data-move-id="move-56" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">生面团<span class="why">会在胃里继续发酵膨胀</span></div>
+          <div class="danger-item" data-edit-id="text-45" data-move-id="move-57" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">咖啡、茶、能量饮料<span class="why">咖啡因会刺激身体系统</span></div>
+          <div class="danger-item" data-edit-id="text-46" data-move-id="move-58" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">夏威夷果<span class="why">对狗不友好，别当坚果零食</span></div>
+        </div>
+        <p class="bottom-tip" data-edit-id="text-47" data-move-id="move-59" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;越是 “只尝一口” 的东西，越容易藏风险</p>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-edit-id="text-48" data-move-id="move-60" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">不是中毒，但有危险</span>
+          <span class="page-num" data-edit-id="text-49" data-move-id="move-61" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">05</span>
+        </div>
+        <h2 data-edit-id="text-50" data-move-id="move-62" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;" class="">熟骨头、高盐、<br>高脂也不建议</h2>
+        <figure class="hero-img" data-move-id="move-63" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <img src="assets/xhs-foods-ai/ai-salty-fatty-bones.png" alt="熟骨头和高盐高脂食物">
+        </figure>
+        <div class="risk-rows" data-move-id="move-64" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+          <div class="risk-row" data-move-id="move-65" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <strong data-edit-id="text-51" data-move-id="move-72" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">熟骨头</strong>
+            <span data-edit-id="text-52" data-move-id="move-73" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">可能划伤、卡住、堵塞。不要把鸡骨、排骨当奖励。</span>
+          </div>
+          <div class="risk-row" data-move-id="move-66" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <strong data-edit-id="text-53" data-move-id="move-74" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">高盐</strong>
+            <span data-edit-id="text-54" data-move-id="move-75" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;" class="">火腿、腊肉、薯片、重口味剩菜都算。</span>
+          </div>
+          <div class="risk-row" data-move-id="move-67" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">
+            <strong data-edit-id="text-55" data-move-id="move-76" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">高脂</strong>
+            <span data-edit-id="text-56" data-move-id="move-77" style="--edit-x: 0px; --edit-y: 0px; --edit-scale: 1;">炸鸡皮、肥肉、奶油蛋糕，容易刺激胃肠，严重时有胰腺炎风险。</span>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+  <p class="credits">图片为 AI 生成，仅用于选题视觉表达；误食后请保留包装并咨询兽医。</p>
+  <script src="assets/vendor/html2canvas.min.js"></script>
+  <script>
+    (() => {
+      const STORAGE_KEY = "xhs-pet-food-blacklist-v4-xhs-edits";
+      const MODE_KEY = `${STORAGE_KEY}:mode`;
+      const main = document.querySelector("main");
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const toolbar = document.querySelector(".edit-toolbar");
+      const launcher = document.querySelector(".edit-launcher");
+      const selectedLabel = document.querySelector("[data-edit-selected]");
+      const exportStatus = document.querySelector("[data-export-status]");
+
+      const editableSelector = [
+        "h1",
+        "h2",
+        "h3",
+        "p",
+        ".pill",
+        ".page-num",
+        ".cover-sub",
+        ".photo span",
+        ".tag-cloud span",
+        ".danger-item",
+        ".risk-row strong",
+        ".risk-row span",
+        ".quick-grid span",
+        ".rule-card",
+        ".save-strip",
+        ".big-warning"
+      ].join(", ");
+
+      const moveSelector = [
+        ".cover-title",
+        ".cover-sub",
+        ".cover-collage",
+        ".photo",
+        ".save-strip",
+        ".note-box",
+        ".lead",
+        ".quick-grid",
+        ".big-warning",
+        ".food-card",
+        ".rule-card",
+        ".hero-img",
+        ".caption",
+        ".tag-cloud",
+        ".mini-row",
+        ".mini-img",
+        ".danger-list",
+        ".danger-item",
+        ".bottom-tip",
+        ".risk-rows",
+        ".risk-row",
+        "h1",
+        "h2",
+        "h3",
+        "p",
+        ".pill",
+        ".page-num",
+        ".tag-cloud span",
+        ".quick-grid span"
+      ].join(", ");
+
+      let state = loadState();
+      let editorOn = false;
+      let selectedElement = null;
+      let selectedMoveElement = null;
+
+      const textElements = Array.from(main.querySelectorAll(editableSelector));
+      textElements.forEach((element, index) => {
+        element.dataset.editId = element.dataset.editId || `text-${index}`;
+        if (state.text && Object.prototype.hasOwnProperty.call(state.text, element.dataset.editId)) {
+          element.innerHTML = state.text[element.dataset.editId];
+        }
+      });
+
+      const moveElements = Array.from(new Set([
+        ...Array.from(main.querySelectorAll(moveSelector)),
+        ...textElements
+      ]));
+      moveElements.forEach((element, index) => {
+        element.dataset.moveId = element.dataset.moveId || `move-${index}`;
+        applyMove(element, getMove(element));
+        applyDeleted(element);
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const nativeSourceWidth = Number(params.get("sourceWidth"));
+      if (Number.isFinite(nativeSourceWidth) && nativeSourceWidth >= 320 && nativeSourceWidth <= 1200) {
+        document.documentElement.style.setProperty("--native-export-width", `${Math.round(nativeSourceWidth)}px`);
+        document.documentElement.style.setProperty("--native-export-height", `${Math.round(nativeSourceWidth * 4 / 3)}px`);
+      }
+      const slideNumber = Number(params.get("slide"));
+      if (Number.isInteger(slideNumber) && slideNumber >= 1) {
+        const selected = slides[slideNumber - 1];
+        if (selected) {
+          document.body.classList.add("exporting");
+          selected.classList.add("is-export");
+        }
+      }
+
+      if (!document.body.classList.contains("exporting")) {
+        bindEditorControls();
+        if (params.get("edit") === "1" || safeGet(MODE_KEY) === "1") {
+          setEditorMode(true);
+        }
+      }
+
+      function bindEditorControls() {
+        document.querySelector("[data-editor-open]")?.addEventListener("click", () => setEditorMode(true));
+        document.querySelector("[data-editor-close]")?.addEventListener("click", () => setEditorMode(false));
+        document.querySelectorAll("[data-export-all]").forEach((button) => {
+          button.addEventListener("click", () => nativeExportSlides());
+        });
+
+        toolbar?.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-edit-command]");
+          if (!button) {
+            return;
+          }
+          runCommand(button.dataset.editCommand);
+        });
+
+        main.addEventListener("click", (event) => {
+          if (!editorOn) {
+            return;
+          }
+          const target = event.target.closest("[data-edit-id], [data-move-id]");
+          if (target && main.contains(target)) {
+            selectElement(target);
+          }
+        });
+
+        main.addEventListener("input", (event) => {
+          const target = event.target.closest("[data-edit-id]");
+          if (!target) {
+            return;
+          }
+          state.text = state.text || {};
+          state.text[target.dataset.editId] = target.innerHTML;
+          saveState();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (!editorOn || !selectedMoveElement || !event.altKey) {
+            return;
+          }
+          const step = event.shiftKey ? 24 : 8;
+          const moves = {
+            ArrowLeft: [-step, 0],
+            ArrowRight: [step, 0],
+            ArrowUp: [0, -step],
+            ArrowDown: [0, step]
+          };
+          if (!moves[event.key]) {
+            return;
+          }
+          event.preventDefault();
+          nudge(moves[event.key][0], moves[event.key][1]);
+        });
+      }
+
+      function setEditorMode(on) {
+        editorOn = on;
+        document.body.classList.toggle("editor-on", on);
+        if (toolbar) {
+          toolbar.hidden = !on;
+        }
+        if (launcher) {
+          launcher.hidden = on;
+        }
+        textElements.forEach((element) => {
+          element.contentEditable = on ? "true" : "false";
+          element.spellcheck = false;
+        });
+        if (!on) {
+          clearSelection();
+        }
+        safeSet(MODE_KEY, on ? "1" : "0");
+      }
+
+      function runCommand(command) {
+        if (command === "download") {
+          downloadCurrentHtml();
+          return;
+        }
+        if (command === "nativeExport") {
+          nativeExportSlides();
+          return;
+        }
+        if (command === "exportAll") {
+          exportAllSlides();
+          return;
+        }
+        if (command === "resetAll") {
+          if (window.confirm("确定清空所有浏览器里的文字和位置修改吗？")) {
+            safeRemove(STORAGE_KEY);
+            safeRemove(MODE_KEY);
+            window.location.reload();
+          }
+          return;
+        }
+        if (!selectedMoveElement) {
+          window.alert("先点选要调整的文字、图片或模块。");
+          return;
+        }
+        if (command === "left") nudge(-8, 0);
+        if (command === "right") nudge(8, 0);
+        if (command === "up") nudge(0, -8);
+        if (command === "down") nudge(0, 8);
+        if (command === "bigger") scaleSelected(0.04);
+        if (command === "smaller") scaleSelected(-0.04);
+        if (command === "resetSelected") resetSelectedMove();
+        if (command === "deleteSelected") deleteSelectedElement();
+      }
+
+      async function nativeExportSlides() {
+        clearSelection();
+        const previousEditorMode = editorOn;
+        setEditorMode(false);
+        setExportStatus("正在连接原生导出服务...");
+
+        try {
+          const response = await fetch("http://127.0.0.1:8765/export", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              html: buildCurrentHtmlSnapshot(),
+              pages: slides.length,
+              sourceWidth: getExportSourceSize(slides[0]).width
+            })
+          });
+
+          const result = await response.json();
+          if (!response.ok || !result.ok) {
+            throw new Error(result.error || "原生导出失败");
+          }
+
+          setExportStatus("原生导出完成");
+          window.alert(`已导出 6 张原生截图。\n保存位置：\n${result.outputDir}`);
+        } catch (error) {
+          console.error(error);
+          const message = error?.message || "";
+          if (message.includes("Failed to fetch")) {
+            setExportStatus("原生服务未连接");
+            window.alert("原生导出服务没有启动。\n\n请先双击工作区里的 start-xhs-native-export-server.bat，保持弹出的窗口打开，再回到这里点击“原生导出小红书图片”。");
+          } else {
+            setExportStatus("原生导出失败");
+            window.alert(`原生导出失败：\n${message}`);
+          }
+        } finally {
+          if (previousEditorMode) {
+            setEditorMode(true);
+          }
+          setTimeout(() => setExportStatus(""), 5000);
+        }
+      }
+
+      function buildCurrentHtmlSnapshot() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelector("body")?.classList.remove("editor-on", "exporting");
+        clone.querySelector(".edit-toolbar")?.setAttribute("hidden", "");
+        clone.querySelector(".edit-launcher")?.removeAttribute("hidden");
+        clone.querySelectorAll(".is-export").forEach((element) => {
+          element.classList.remove("is-export");
+        });
+        clone.querySelectorAll("[contenteditable]").forEach((element) => {
+          element.removeAttribute("contenteditable");
+          element.removeAttribute("spellcheck");
+        });
+        clone.querySelectorAll(".edit-selected").forEach((element) => {
+          element.classList.remove("edit-selected");
+        });
+        return `<!doctype html>\n${clone.outerHTML}`;
+      }
+
+      async function exportAllSlides() {
+        if (!window.html2canvas) {
+          window.alert("导出组件没有加载成功，请确认 assets/vendor/html2canvas.min.js 存在。");
+          return;
+        }
+
+        clearSelection();
+        const previousEditorMode = editorOn;
+        setEditorMode(false);
+        setExportStatus("准备导出...");
+
+        const stage = document.createElement("div");
+        stage.className = "export-stage";
+        document.body.appendChild(stage);
+
+        try {
+          await document.fonts?.ready;
+          await ensureImageDataLoaded();
+          const dirHandle = await chooseExportDirectory();
+          if (dirHandle === false) {
+            setExportStatus("已取消导出");
+            return;
+          }
+
+          for (let index = 0; index < slides.length; index += 1) {
+            const slide = slides[index];
+            const exportSize = getExportSourceSize(slide);
+            const clone = slide.cloneNode(true);
+            prepareExportClone(clone);
+            applyExportSize(stage, clone, exportSize);
+            stage.replaceChildren(clone);
+            setExportStatus(`正在导出 ${index + 1}/${slides.length}`);
+            await waitForImages(clone);
+            await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+            const canvas = await html2canvas(clone, {
+              width: exportSize.width,
+              height: exportSize.height,
+              scale: 1080 / exportSize.width,
+              backgroundColor: "#fffdf8",
+              logging: false,
+              useCORS: true,
+              imageTimeout: 15000
+            });
+            const finalCanvas = normalizeCanvasSize(canvas, 1080, 1440);
+            const filename = `xhs-pet-food-blacklist-page${index + 1}.png`;
+            const blob = await canvasToBlob(finalCanvas);
+            if (dirHandle) {
+              await saveBlobToDirectory(dirHandle, filename, blob);
+            } else {
+              downloadBlob(blob, filename);
+            }
+            await sleep(240);
+          }
+          setExportStatus(dirHandle ? "已导出 6 张图片" : "已开始下载 6 张图片");
+        } catch (error) {
+          console.error(error);
+          setExportStatus("导出失败");
+          window.alert("导出失败。可以先点“下载当前HTML”，再让我用那份文件重新导出。");
+        } finally {
+          stage.remove();
+          if (previousEditorMode) {
+            setEditorMode(true);
+          }
+          setTimeout(() => setExportStatus(""), 5000);
+        }
+      }
+
+      function getExportSourceSize(slide) {
+        const rect = slide.getBoundingClientRect();
+        const width = Math.max(320, Math.round(rect.width || 540));
+        return {
+          width,
+          height: Math.round(width * 4 / 3)
+        };
+      }
+
+      function applyExportSize(stage, clone, size) {
+        stage.style.width = `${size.width}px`;
+        stage.style.height = `${size.height}px`;
+        clone.style.width = `${size.width}px`;
+        clone.style.height = `${size.height}px`;
+        clone.style.aspectRatio = "auto";
+      }
+
+      function normalizeCanvasSize(canvas, targetWidth, targetHeight) {
+        if (canvas.width === targetWidth && canvas.height === targetHeight) {
+          return canvas;
+        }
+        const output = document.createElement("canvas");
+        output.width = targetWidth;
+        output.height = targetHeight;
+        const context = output.getContext("2d");
+        context.fillStyle = "#fffdf8";
+        context.fillRect(0, 0, targetWidth, targetHeight);
+        context.drawImage(canvas, 0, 0, targetWidth, targetHeight);
+        return output;
+      }
+
+      function prepareExportClone(clone) {
+        clone.classList.remove("edit-selected", "is-export");
+        clone.querySelectorAll(".edit-selected").forEach((element) => {
+          element.classList.remove("edit-selected");
+        });
+        clone.querySelectorAll("[contenteditable]").forEach((element) => {
+          element.removeAttribute("contenteditable");
+          element.removeAttribute("spellcheck");
+        });
+        clone.querySelectorAll("img").forEach((image) => {
+          const originalSrc = image.getAttribute("src");
+          const dataUrl = originalSrc && window.XHS_IMAGE_DATA?.[originalSrc];
+          if (dataUrl) {
+            const replacement = document.createElement("div");
+            replacement.className = "export-image-replacement";
+            replacement.setAttribute("role", "img");
+            replacement.setAttribute("aria-label", image.getAttribute("alt") || "");
+            replacement.style.backgroundImage = `url("${dataUrl}")`;
+            image.replaceWith(replacement);
+            return;
+          }
+          image.loading = "eager";
+          image.decoding = "sync";
+        });
+      }
+
+      function ensureImageDataLoaded() {
+        if (window.XHS_IMAGE_DATA) {
+          return Promise.resolve();
+        }
+        setExportStatus("正在准备图片数据...");
+        return new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "assets/xhs-foods-ai/food-image-data.js";
+          script.onload = resolve;
+          script.onerror = () => reject(new Error("Image data script failed to load"));
+          document.body.appendChild(script);
+        });
+      }
+
+      function waitForImages(root) {
+        const images = Array.from(root.querySelectorAll("img"));
+        return Promise.all(images.map((image) => {
+          if (image.complete && image.naturalWidth > 0) {
+            return Promise.resolve();
+          }
+          return new Promise((resolve, reject) => {
+            image.addEventListener("load", resolve, { once: true });
+            image.addEventListener("error", reject, { once: true });
+          });
+        }));
+      }
+
+      async function chooseExportDirectory() {
+        if (!window.showDirectoryPicker) {
+          return null;
+        }
+        try {
+          setExportStatus("请选择保存文件夹");
+          return await window.showDirectoryPicker({
+            id: "xhs-pet-food-export",
+            mode: "readwrite",
+            startIn: "downloads"
+          });
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            return false;
+          }
+          return null;
+        }
+      }
+
+      function canvasToBlob(canvas) {
+        return new Promise((resolve, reject) => {
+          canvas.toBlob((blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject(new Error("Canvas export failed"));
+            }
+          }, "image/png");
+        });
+      }
+
+      async function saveBlobToDirectory(dirHandle, filename, blob) {
+        const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+        const writable = await fileHandle.createWritable();
+        await writable.write(blob);
+        await writable.close();
+      }
+
+      function downloadBlob(blob, filename) {
+        const link = document.createElement("a");
+        link.download = filename;
+        link.href = URL.createObjectURL(blob);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(link.href), 3000);
+      }
+
+      function setExportStatus(text) {
+        if (exportStatus) {
+          exportStatus.textContent = text;
+        }
+      }
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      function selectElement(element) {
+        clearSelection();
+        selectedElement = element;
+        selectedMoveElement = element.closest("[data-move-id]") || element;
+        selectedElement.classList.add("edit-selected");
+        updateSelectedLabel();
+      }
+
+      function clearSelection() {
+        selectedElement?.classList.remove("edit-selected");
+        selectedElement = null;
+        selectedMoveElement = null;
+        updateSelectedLabel();
+      }
+
+      function updateSelectedLabel() {
+        if (!selectedLabel) {
+          return;
+        }
+        if (!selectedMoveElement) {
+          selectedLabel.textContent = "未选择元素";
+          return;
+        }
+        const slide = selectedMoveElement.closest(".slide");
+        const slideIndex = slides.indexOf(slide) + 1;
+        const text = selectedMoveElement.textContent.trim().replace(/\s+/g, " ").slice(0, 18);
+        selectedLabel.textContent = `选中：第${slideIndex}页 ${text || selectedMoveElement.className || selectedMoveElement.tagName}`;
+      }
+
+      function nudge(dx, dy) {
+        const move = getMove(selectedMoveElement);
+        move.x += dx;
+        move.y += dy;
+        setMove(selectedMoveElement, move);
+      }
+
+      function scaleSelected(delta) {
+        const move = getMove(selectedMoveElement);
+        move.scale = clamp(Number((move.scale + delta).toFixed(2)), 0.72, 1.38);
+        setMove(selectedMoveElement, move);
+      }
+
+      function resetSelectedMove() {
+        if (!selectedMoveElement) {
+          return;
+        }
+        const id = selectedMoveElement.dataset.moveId;
+        if (state.moves) {
+          delete state.moves[id];
+        }
+        applyMove(selectedMoveElement, { x: 0, y: 0, scale: 1 });
+        saveState();
+      }
+
+      function deleteSelectedElement() {
+        if (!selectedMoveElement) {
+          return;
+        }
+        const slide = selectedMoveElement.closest(".slide");
+        if (selectedMoveElement.classList.contains("slide") || selectedMoveElement.classList.contains("inner") || selectedMoveElement === slide) {
+          window.alert("不能删除整页。请点选页面里的文字、图片或模块。");
+          return;
+        }
+        if (!window.confirm("确定删除当前选中的内容吗？\n需要恢复时，可点击“清空修改”。")) {
+          return;
+        }
+        const id = selectedMoveElement.dataset.moveId;
+        state.deleted = state.deleted || {};
+        state.deleted[id] = true;
+        selectedMoveElement.classList.add("edit-deleted");
+        clearSelection();
+        saveState();
+      }
+
+      function applyDeleted(element) {
+        if (state.deleted?.[element.dataset.moveId]) {
+          element.classList.add("edit-deleted");
+        }
+      }
+
+      function getMove(element) {
+        const saved = state.moves?.[element.dataset.moveId] || {};
+        return {
+          x: Number(saved.x || 0),
+          y: Number(saved.y || 0),
+          scale: Number(saved.scale || 1)
+        };
+      }
+
+      function setMove(element, move) {
+        state.moves = state.moves || {};
+        state.moves[element.dataset.moveId] = move;
+        applyMove(element, move);
+        saveState();
+      }
+
+      function applyMove(element, move) {
+        element.style.setProperty("--edit-x", `${Number(move.x || 0)}px`);
+        element.style.setProperty("--edit-y", `${Number(move.y || 0)}px`);
+        element.style.setProperty("--edit-scale", Number(move.scale || 1));
+      }
+
+      function downloadCurrentHtml() {
+        clearSelection();
+        const blob = new Blob([buildCurrentHtmlSnapshot()], { type: "text/html;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "xhs-pet-food-blacklist-v4-xhs-edited.html";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(link.href);
+      }
+
+      function loadState() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        } catch (error) {
+          return {};
+        }
+      }
+
+      function saveState() {
+        safeSet(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function safeGet(key) {
+        try {
+          return localStorage.getItem(key);
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function safeSet(key, value) {
+        try {
+          localStorage.setItem(key, value);
+        } catch (error) {
+          // 本地文件模式下如果浏览器限制 localStorage，页面仍可编辑，只是不自动保存。
+        }
+      }
+
+      function safeRemove(key) {
+        try {
+          localStorage.removeItem(key);
+        } catch (error) {
+          // Ignore storage cleanup failures.
+        }
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+    })();
+  </script>
+
+
+</body></html>

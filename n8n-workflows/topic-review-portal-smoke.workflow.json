@@ -1,0 +1,54 @@
+{
+  "name": "RedBook Topic Review Portal Smoke",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "5b8fbb2f-2482-43c4-bcf6-ff0bc3f1e001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\generate_review_portal.py\""
+      },
+      "id": "a7cb3538-b137-4958-b6d7-3e94ced2e002",
+      "name": "Generate Review Portal",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        560,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Generate Review Portal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "a2527c46-ae06-4de7-8910-ee29b36b6101",
+  "id": "RedBookTopicReviewPortalSmoke",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

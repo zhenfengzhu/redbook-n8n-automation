@@ -1,0 +1,54 @@
+{
+  "name": "RedBook Topic Review Actions Smoke",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c541d0a7-f9f7-4be8-a18d-7a3f3c4ce001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\apply_review_actions.py\" --dry-run"
+      },
+      "id": "f70b064c-9b8f-4d29-a2d1-28ad91d2e002",
+      "name": "Dry Run Review Actions",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        560,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Dry Run Review Actions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "versionId": "0f8a96d2-78e7-4dfc-9fae-1e536c2e3a66",
+  "id": "RedBookTopicReviewActionsSmoke",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

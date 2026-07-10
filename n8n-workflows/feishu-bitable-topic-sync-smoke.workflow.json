@@ -1,0 +1,55 @@
+{
+  "name": "RedBook Feishu Bitable Topic Sync Smoke",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9baf9f3e-4e9f-45e1-b6cd-18066f70e001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "executeOnce": true,
+        "command": "python \"D:\\AUnityProject\\RedBook\\scripts\\sync_feishu_bitable_topics.py\""
+      },
+      "id": "5e5e32b1-9813-4e62-96c5-bdc75ea7e002",
+      "name": "Feishu Bitable Sync Dry Run",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        560,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Feishu Bitable Sync Dry Run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Shanghai"
+  },
+  "active": false,
+  "versionId": "f4d7c0c9-df0b-4918-a647-74a6d5f7fd9b",
+  "id": "RedBookFeishuBitableTopicSyncSmoke",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}
