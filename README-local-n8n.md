@@ -165,6 +165,115 @@ PDF notes:
 - The script creates translated Markdown from extracted PDF text; it does not edit or recreate the original PDF layout.
 - Image-only or scanned PDF pages can have no extractable text. Those pages are recorded as `未抽取到可翻译文本。`; add OCR if full image-page translation is required.
 
+## Crawl PetMD
+
+The PetMD crawler is separate from the FEDIAF crawler. It reads PetMD's HTML sitemap page and same-site links, respects `robots.txt` blocks for search/login/admin-style paths, and saves extracted article text as Markdown under `data/`.
+
+Small smoke run:
+
+```powershell
+cd D:\AUnityProject\RedBook
+python scripts\petmd_crawler.py --start-url https://www.petmd.com/dog/conditions --contains /dog/conditions --limit 3 --out data\petmd-smoke
+```
+
+Default local research run:
+
+```powershell
+python scripts\petmd_crawler.py --limit 10 --out data\petmd
+```
+
+Topic-focused examples:
+
+```powershell
+python scripts\petmd_crawler.py --start-url https://www.petmd.com/dog/centers/nutrition --contains /dog/ --limit 20 --out data\petmd-dog
+python scripts\petmd_crawler.py --start-url https://www.petmd.com/cat/centers/nutrition --contains /cat/ --limit 20 --out data\petmd-cat
+```
+
+Useful options:
+
+- `--delay 3`: delay between requests in seconds; default is 3.
+- `--contains TEXT`: only save/continue priority for URLs containing this text; can be repeated.
+- `--include-index-pages`: save category/index pages too; by default the script prefers article-like pages.
+- `--no-saved-page-discovery`: discover links from category pages, but stop expanding from pages already saved as articles.
+- `--max-discovery 1000`: stop after this many visited URLs.
+- `--all`: continue until discovery is exhausted or `--max-discovery` is reached.
+
+Outputs:
+
+- `pages/`: one Markdown file per saved page, with source URL, timestamps, author/review metadata when available, description, image URL, and extracted text.
+- `index.json`: crawl records, skipped/discovered pages, metadata, and Markdown paths.
+- `summary.json`: run summary.
+
+Use PetMD content as local research/reference material. Do not republish copied article text verbatim; convert it into original Xiaohongshu scripts with source attribution and veterinary-scope boundaries.
+
+## Translate PetMD and Generate Topic Cards
+
+Translate a PetMD crawl into Chinese:
+
+```powershell
+cd D:\AUnityProject\RedBook
+python scripts\translate_petmd_to_zh.py --input data\petmd --out data\petmd-zh
+```
+
+Generate Xiaohongshu-oriented internal topic cards from the Chinese translations:
+
+```powershell
+python scripts\generate_petmd_topic_cards.py --translation-index data\petmd-zh\translation-index.json --output-dir data\petmd-topic-cards
+```
+
+Smoke example using the cat nutrition crawl:
+
+```powershell
+python scripts\petmd_crawler.py --start-url https://www.petmd.com/cat/centers/nutrition --contains /cat/ --limit 1 --out data\petmd-cat-smoke
+python scripts\translate_petmd_to_zh.py --input data\petmd-cat-smoke --out data\petmd-cat-smoke-zh --overwrite
+python scripts\generate_petmd_topic_cards.py --translation-index data\petmd-cat-smoke-zh\translation-index.json --output-dir data\petmd-cat-topic-smoke
+```
+
+Topic-card outputs:
+
+- `source-items.jsonl`: normalized PetMD source records.
+- `topic-cards.jsonl`: creator-facing topic cards with source URL, translated title, topic, cover hook, Xiaohongshu angle, evidence excerpt, risk level, and veterinary-boundary note.
+- `review-report.md`: quick human-readable preview.
+- `summary.json`: counts and output paths.
+
+PetMD content often includes medical symptoms, treatments, prescription diets, or veterinary recommendations. The card generator intentionally marks those records for manual review and adds a veterinary-boundary note.
+
+## PetMD Automation Runner
+
+Use the PetMD automation runner when you want one command to crawl, translate, generate topic cards, and write run logs:
+
+```powershell
+cd D:\AUnityProject\RedBook
+python scripts\petmd_automation.py --start-url https://www.petmd.com/cat/centers/nutrition --contains /cat/ --limit 20 --crawl-out data\petmd-cat --translate-out data\petmd-cat-zh --cards-out data\petmd-cat-topic-cards
+```
+
+Smoke run:
+
+```powershell
+python scripts\petmd_automation.py --start-url https://www.petmd.com/cat/centers/nutrition --contains /cat/ --limit 1 --delay 1 --max-discovery 80 --crawl-out data\petmd-auto-smoke --translate-out data\petmd-auto-smoke-zh --cards-out data\petmd-auto-smoke-cards --log-root data\petmd-auto-smoke-logs --overwrite-translation
+```
+
+Preview commands without running:
+
+```powershell
+python scripts\petmd_automation.py --start-url https://www.petmd.com/dog/centers/nutrition --contains /dog/ --limit 20 --dry-run
+```
+
+Logs and summaries:
+
+- `data\petmd-automation-logs\<run-id>\crawl.log`
+- `data\petmd-automation-logs\<run-id>\translate.log`
+- `data\petmd-automation-logs\<run-id>\cards.log`
+- `data\petmd-automation-logs\<run-id>\run-summary.json`
+- `data\petmd-automation-logs\latest-run.json`
+
+Large PetMD source crawls verified on 2026-07-11:
+
+- `data\petmd-health-focused`: 2,226 crawled health-focused pages from dog/cat conditions, symptoms, nutrition, care, parasites, medication, recalls, healthy weight, and veterinary terms paths. See `data\petmd-health-focused\final-crawl-summary.md`.
+- `data\petmd-health-all`: 3,453 broader PetMD pages from a less-filtered crawl. This includes health pages plus broader site content. See `data\petmd-health-all\final-crawl-summary.md`.
+
+For large batches, crawl first and translate later in smaller topic groups. Translating thousands of PetMD pages in one run is slow and produces machine-translation text that still needs editorial review.
+
 ## Generate Topic Candidates
 
 Generate stable JSONL records from the existing Chinese translations before wiring n8n or Baserow:

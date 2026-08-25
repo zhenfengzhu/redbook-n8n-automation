@@ -139,6 +139,7 @@ data\fediaf-cleanup-report.json
 
 When generating, reviewing, or transforming content for Xiaohongshu pet health:
 
+- For Xiaohongshu post creation, write the plain text content first and wait for the user's approval before generating HTML, carousel pages, image assets, or exports.
 - Prefer evidence from FEDIAF, WSAVA, AAHA, AVMA, FDA, AAFCO, veterinary universities, and peer-reviewed sources.
 - Preserve source URLs and local evidence paths.
 - Avoid absolute medical claims.

@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>狗狗体况评分怎么看｜小红书图文</title>
+  <style>
+    :root {
+      --red: #e83f3f;
+      --red-deep: #b91924;
+      --ink: #241714;
+      --muted: #705c55;
+      --cream: #fffdf8;
+      --line: #efcfc5;
+      --green: #516c45;
+      --yellow: #ffd96b;
+      --blue: #587bb8;
+      --shadow: 0 18px 42px rgba(111, 47, 37, 0.14);
+      --native-export-width: 1080px;
+      --native-export-height: 1440px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 16px 16px, rgba(232, 63, 63, 0.12) 0 2px, transparent 3px),
+        linear-gradient(180deg, #fff6f1 0%, #ffece6 100%);
+      background-size: 28px 28px, auto;
+      color: var(--ink);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body { padding: 32px; }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 28px;
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3, p, figure { margin: 0; }
+
+    [data-move] {
+      --edit-x: 0px;
+      --edit-y: 0px;
+      --edit-scale: 1;
+      transform: translate(var(--edit-x), var(--edit-y)) scale(var(--edit-scale));
+      transform-origin: center;
+    }
+
+    .slide {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border: 1px solid rgba(232, 63, 63, 0.16);
+      border-radius: 8px;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(232, 63, 63, 0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(232, 63, 63, 0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 88%, transparent 100%);
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -92px;
+      top: -80px;
+      z-index: -1;
+      border-radius: 50%;
+      background: rgba(255, 217, 107, 0.68);
+    }
+
+    .inner {
+      position: absolute;
+      inset: 34px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 40px;
+      margin-bottom: 18px;
+      color: var(--red-deep);
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .pill,
+    .page-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid currentColor;
+      border-radius: 999px;
+      background: #fff;
+      white-space: nowrap;
+    }
+
+    .pill {
+      min-height: 36px;
+      padding: 0 15px;
+      box-shadow: 4px 4px 0 rgba(232, 63, 63, 0.14);
+    }
+
+    .page-num {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      color: #fff;
+      border-color: var(--red);
+      background: var(--red);
+      font-size: 16px;
+      box-shadow: 4px 4px 0 rgba(185, 25, 36, 0.2);
+    }
+
+    h1 {
+      font-size: 56px;
+      line-height: 1.03;
+      font-weight: 950;
+    }
+
+    h1 .small,
+    h1 .big { display: block; }
+
+    h1 .small {
+      font-size: 34px;
+      color: var(--red-deep);
+    }
+
+    h1 .big {
+      margin-top: 8px;
+      font-size: 62px;
+    }
+
+    h2 {
+      font-size: 42px;
+      line-height: 1.1;
+      font-weight: 950;
+    }
+
+    h3 {
+      font-size: 24px;
+      line-height: 1.16;
+      font-weight: 950;
+    }
+
+    .red { color: var(--red); }
+
+    .marker {
+      position: relative;
+      display: inline;
+      z-index: 0;
+    }
+
+    .marker::after {
+      content: "";
+      position: absolute;
+      left: -3px;
+      right: -3px;
+      bottom: 4px;
+      height: 16px;
+      z-index: -1;
+      background: rgba(255, 217, 107, 0.86);
+      transform: rotate(-1.4deg);
+    }
+
+    .lead {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 23px;
+      line-height: 1.45;
+      font-weight: 750;
+    }
+
+    .cover .inner { inset: 34px 31px 30px; }
+
+    .cover-title { max-width: 470px; }
+
+    .cover-sub {
+      margin-top: 16px;
+      width: fit-content;
+      padding: 10px 14px;
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--red-deep);
+      font-size: 22px;
+      line-height: 1.28;
+      font-weight: 900;
+      box-shadow: 5px 5px 0 rgba(232, 63, 63, 0.14);
+    }
+
+    .cover-collage {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      margin-top: 20px;
+    }
+
+    .photo {
+      position: absolute;
+      overflow: hidden;
+      border: 7px solid #fff;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 14px 30px rgba(52, 24, 18, 0.18);
+    }
+
+    .photo img,
+    .hero-img img,
+    .mini-img img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .photo span {
+      position: absolute;
+      left: 10px;
+      bottom: 9px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 850;
+    }
+
+    .p1 { left: 4px; top: 8px; width: 278px; height: 218px; transform: rotate(-5deg); }
+    .p2 { right: 6px; top: 30px; width: 242px; height: 212px; transform: rotate(4deg); }
+    .p3 { left: 34px; bottom: 48px; width: 244px; height: 190px; transform: rotate(3deg); }
+    .p4 { right: 24px; bottom: 38px; width: 236px; height: 196px; transform: rotate(-3deg); }
+
+    .save-strip {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 0;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: var(--red-deep);
+      color: #fff;
+      text-align: center;
+      font-size: 22px;
+      font-weight: 950;
+      box-shadow: 0 12px 22px rgba(185, 25, 36, 0.18);
+    }
+
+    .note-box {
+      margin-top: 18px;
+      padding: 22px;
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 6px 6px 0 rgba(232, 63, 63, 0.12);
+      font-size: 27px;
+      line-height: 1.36;
+      font-weight: 900;
+    }
+
+    .quick-grid,
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .quick-grid span,
+    .check-grid span {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 10px;
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--red-deep);
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .bottom-warning,
+    .summary {
+      margin-top: auto;
+      padding: 14px 18px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 25px;
+      line-height: 1.28;
+      font-weight: 950;
+    }
+
+    .bottom-warning {
+      background: var(--red-deep);
+      color: #fff;
+    }
+
+    .summary {
+      background: var(--yellow);
+      color: var(--ink);
+    }
+
+    .compare {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .compare-card {
+      padding: 18px 20px;
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .compare-card strong {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--red-deep);
+      font-size: 24px;
+      line-height: 1.1;
+      font-weight: 950;
+    }
+
+    .compare-card p {
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1.38;
+      font-weight: 750;
+    }
+
+    .hero-img {
+      overflow: hidden;
+      height: 238px;
+      margin-top: 18px;
+      border: 7px solid #fff;
+      border-radius: 8px;
+      box-shadow: 0 14px 28px rgba(52, 24, 18, 0.15);
+      background: #fff;
+    }
+
+    .mini-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .mini-img {
+      overflow: hidden;
+      height: 182px;
+      border: 7px solid #fff;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 12px 24px rgba(52, 24, 18, 0.14);
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 88px;
+      padding: 12px;
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .step strong {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 8px;
+      background: var(--red);
+      color: #fff;
+      font-size: 20px;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    .step span {
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.32;
+      font-weight: 800;
+    }
+
+    .rule-card {
+      margin-top: 15px;
+      padding: 16px 18px;
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--green);
+      font-size: 21px;
+      line-height: 1.34;
+      font-weight: 900;
+    }
+
+    .credits {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      color: rgba(36, 23, 20, 0.58);
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .edit-launcher,
+    .edit-toolbar {
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      z-index: 50;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: min(760px, calc(100vw - 36px));
+      padding: 10px;
+      border: 1px solid rgba(185, 25, 36, 0.18);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.96);
+      box-shadow: 0 10px 28px rgba(52, 24, 18, 0.16);
+      font-size: 14px;
+    }
+
+    .edit-toolbar[hidden],
+    .edit-launcher[hidden] { display: none; }
+
+    .edit-launcher button,
+    .edit-toolbar button {
+      min-height: 30px;
+      border: 1px solid var(--red);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--red-deep);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .edit-toolbar .danger {
+      color: #fff;
+      background: var(--red);
+    }
+
+    .edit-selected {
+      outline: 3px dashed var(--blue) !important;
+      outline-offset: 3px;
+    }
+
+    .edit-deleted { display: none !important; }
+
+    body.editor-on [contenteditable="true"] {
+      cursor: text;
+      outline: 1.5px dashed rgba(88, 123, 184, 0.5);
+      outline-offset: 2px;
+    }
+
+    body.editor-on [data-move] { cursor: pointer; }
+
+    .export-status,
+    .edit-selected-label {
+      align-self: center;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    @media (max-width: 720px) {
+      body { padding: 72px 14px 24px; }
+      main { grid-template-columns: 1fr; }
+      .edit-launcher, .edit-toolbar { left: 10px; right: 10px; top: 10px; }
+    }
+
+    @page { size: 1080px 1440px; margin: 0; }
+
+    @media print {
+      body { padding: 0; background: #fff; }
+      main { display: block; max-width: none; }
+      .slide {
+        width: 1080px;
+        height: 1440px;
+        page-break-after: always;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      .edit-ui, .credits { display: none !important; }
+    }
+
+    body.exporting {
+      width: var(--native-export-width);
+      height: var(--native-export-height);
+      padding: 0;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    body.exporting main {
+      display: block;
+      width: var(--native-export-width);
+      height: var(--native-export-height);
+      margin: 0;
+    }
+
+    body.exporting .slide {
+      display: none;
+      width: var(--native-export-width);
+      height: var(--native-export-height);
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    body.exporting .slide.is-export { display: block; }
+    body.exporting .edit-ui, body.exporting .credits { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="edit-launcher edit-ui">
+    <button type="button" data-export-all>原生导出小红书图片</button>
+    <button type="button" data-editor-open>编辑文字/位置</button>
+  </div>
+  <div class="edit-toolbar edit-ui" hidden>
+    <strong>编辑模式</strong>
+    <button type="button" data-editor-close>预览</button>
+    <button type="button" data-edit-command="left">左移</button>
+    <button type="button" data-edit-command="right">右移</button>
+    <button type="button" data-edit-command="up">上移</button>
+    <button type="button" data-edit-command="down">下移</button>
+    <button type="button" data-edit-command="bigger">放大</button>
+    <button type="button" data-edit-command="smaller">缩小</button>
+    <button type="button" data-edit-command="resetSelected">重置选中</button>
+    <button type="button" class="danger" data-edit-command="deleteSelected">删除选中</button>
+    <button type="button" data-edit-command="nativeExport">原生导出图片</button>
+    <button type="button" data-edit-command="download">下载当前HTML</button>
+    <button type="button" class="danger" data-edit-command="resetAll">清空修改</button>
+    <span class="export-status" data-export-status></span>
+    <span class="edit-selected-label" data-edit-selected>未选择元素</span>
+  </div>
+
+  <main aria-label="狗狗体况评分小红书图文">
+    <article class="slide cover">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-editable data-move>狗狗体重管理必存</span>
+          <span class="page-num" data-editable data-move>封面</span>
+        </div>
+        <h1 class="cover-title" data-editable data-move>
+          <span class="small">狗狗体况评分</span>
+          <span class="big">怎么看？<br>比体重更直观</span>
+        </h1>
+        <p class="cover-sub" data-editable data-move>不用设备<br>眼睛 + 双手就能先判断</p>
+        <div class="cover-collage" data-move>
+          <figure class="photo p1" data-move>
+            <img src="assets/xhs-images/body-top-waist.png" alt="黑白边牧俯视腰线 AI 参考图">
+            <span data-editable>看腰线</span>
+          </figure>
+          <figure class="photo p2" data-move>
+            <img src="assets/xhs-images/rib-touch.png" alt="黑白边牧摸肋骨 AI 参考图">
+            <span data-editable>摸肋骨</span>
+          </figure>
+          <figure class="photo p3" data-move>
+            <img src="assets/xhs-images/body-side-tuck.png" alt="黑白边牧侧面腹线 AI 参考图">
+            <span data-editable>看腹线</span>
+          </figure>
+          <figure class="photo p4" data-move>
+            <img src="assets/xhs-images/dog-scale.png" alt="黑白边牧体重记录 AI 参考图">
+            <span data-editable>别只看斤数</span>
+          </figure>
+          <div class="save-strip" data-editable data-move>先收藏，每月给狗狗摸一次</div>
+        </div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-editable data-move>为什么不只看体重</span>
+          <span class="page-num" data-editable data-move>02</span>
+        </div>
+        <h2 data-editable data-move>同样 10kg<br><span class="marker">体况可能完全不同</span></h2>
+        <div class="note-box" data-editable data-move>
+          体重只是数字，体况评分会同时看脂肪覆盖、腰线、腹线和肌肉变化。
+        </div>
+        <div class="compare" data-move>
+          <section class="compare-card" data-move>
+            <strong data-editable>幼犬长重</strong>
+            <p data-editable>可能是正常发育，也可能喂太多，要结合腰线和肋骨触感看。</p>
+          </section>
+          <section class="compare-card" data-move>
+            <strong data-editable>体重没变</strong>
+            <p data-editable>也可能脂肪变多、肌肉变少，所以体况变化更值得记录。</p>
+          </section>
+        </div>
+        <div class="bottom-warning" data-editable data-move>看体重 + 看体况，才更接近真实状态。</div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-editable data-move>三步快速判断</span>
+          <span class="page-num" data-editable data-move>03</span>
+        </div>
+        <h2 data-editable data-move>先看<br><span class="red">腰线和腹线</span></h2>
+        <figure class="hero-img" data-move>
+          <img src="assets/xhs-images/body-top-waist.png" alt="黑白边牧腰线 AI 参考图">
+        </figure>
+        <div class="steps" data-move>
+          <div class="step" data-move><strong data-editable>俯视</strong><span data-editable>肋骨后方到臀部前方，应该能看到轻微内收的腰线。</span></div>
+          <div class="step" data-move><strong data-editable>侧看</strong><span data-editable>胸腹交界到后腿前方，腹部通常有自然上提。</span></div>
+          <div class="step" data-move><strong data-editable>摸骨</strong><span data-editable>肋骨摸得到，但不是一根根直接突出。</span></div>
+        </div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-editable data-move>摸肋骨怎么摸</span>
+          <span class="page-num" data-editable data-move>04</span>
+        </div>
+        <h2 data-editable data-move>用你的手<br>做<span class="marker">触感参照</span></h2>
+        <figure class="hero-img" data-move>
+          <img src="assets/xhs-images/rib-touch.png" alt="黑白边牧摸肋骨 AI 参考图">
+        </figure>
+        <div class="check-grid" data-move>
+          <span data-editable>像摸拳头关节：偏瘦</span>
+          <span data-editable>像摸手背关节：刚好</span>
+          <span data-editable>像隔掌心摸：偏胖</span>
+          <span data-editable>完全摸不到：该警惕</span>
+        </div>
+        <div class="rule-card" data-editable data-move>重点不是“按到骨头”，而是轻轻滑过时能不能清楚摸到肋骨轮廓。</div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-editable data-move>9 分制怎么理解</span>
+          <span class="page-num" data-editable data-move>05</span>
+        </div>
+        <h2 data-editable data-move>理想通常在<br><span class="red">4-5 / 9 分</span></h2>
+        <div class="compare" data-move>
+          <section class="compare-card" data-move>
+            <strong data-editable>1-3 分</strong>
+            <p data-editable>偏瘦或过瘦，骨点明显，可能需要排查饮食和健康问题。</p>
+          </section>
+          <section class="compare-card" data-move>
+            <strong data-editable>4-5 分</strong>
+            <p data-editable>多数狗狗的理想区间：有腰线，肋骨能摸到但有覆盖。</p>
+          </section>
+          <section class="compare-card" data-move>
+            <strong data-editable>6-9 分</strong>
+            <p data-editable>脂肪覆盖变多，腰线变弱，越往上越需要减重管理。</p>
+          </section>
+        </div>
+        <div class="summary" data-editable data-move>不是越圆越健康，也不是越瘦越好。</div>
+      </section>
+    </article>
+
+    <article class="slide">
+      <section class="inner">
+        <div class="topline">
+          <span class="pill" data-editable data-move>什么时候问兽医</span>
+          <span class="page-num" data-editable data-move>06</span>
+        </div>
+        <h2 data-editable data-move>这些情况<br><span class="marker">别只靠少喂</span></h2>
+        <div class="mini-row" data-move>
+          <figure class="mini-img" data-move><img src="assets/xhs-images/dog-scale.png" alt="狗狗体重秤"></figure>
+          <figure class="mini-img" data-move><img src="assets/xhs-images/vet-check.png" alt="黑白边牧兽医检查 AI 参考图"></figure>
+        </div>
+        <div class="steps" data-move>
+          <div class="step" data-move><strong data-editable>太瘦</strong><span data-editable>1-2/9 或突然消瘦，先排查疾病、疼痛、肠胃和食欲问题。</span></div>
+          <div class="step" data-move><strong data-editable>太胖</strong><span data-editable>7-9/9 不建议自己猛减，先确认目标体重和热量方案。</span></div>
+          <div class="step" data-move><strong data-editable>异常</strong><span data-editable>食欲、饮水、便便、呼吸、活动力变化，优先咨询兽医。</span></div>
+        </div>
+        <div class="summary" data-editable data-move>建议每月同角度拍照 + 摸肋骨，趋势比单次判断更重要。</div>
+      </section>
+    </article>
+  </main>
+
+  <p class="credits">来源参考：PetMD《How To Find Your Dog’s Body Condition Score》；内容为宠物健康科普，不替代兽医诊断或个体化减重/增重方案。</p>
+
+  <script>
+    (() => {
+      const STORAGE_KEY = "xhs-dog-body-condition-score-v1-edits";
+      const MODE_KEY = `${STORAGE_KEY}:mode`;
+      const main = document.querySelector("main");
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const toolbar = document.querySelector(".edit-toolbar");
+      const launcher = document.querySelector(".edit-launcher");
+      const selectedLabel = document.querySelector("[data-edit-selected]");
+      const exportStatus = document.querySelector("[data-export-status]");
+      const editableElements = Array.from(document.querySelectorAll("[data-editable]"));
+      const moveElements = Array.from(document.querySelectorAll("[data-move]"));
+      let state = loadState();
+      let editorOn = false;
+      let selectedMoveElement = null;
+
+      editableElements.forEach((element, index) => {
+        element.dataset.editId = element.dataset.editId || `text-${index}`;
+        if (state.text && Object.prototype.hasOwnProperty.call(state.text, element.dataset.editId)) {
+          element.innerHTML = state.text[element.dataset.editId];
+        }
+      });
+
+      moveElements.forEach((element, index) => {
+        element.dataset.moveId = element.dataset.moveId || `move-${index}`;
+        applyMove(element, getMove(element));
+        if (state.deleted?.[element.dataset.moveId]) {
+          element.classList.add("edit-deleted");
+        }
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const nativeSourceWidth = Number(params.get("sourceWidth"));
+      if (Number.isFinite(nativeSourceWidth) && nativeSourceWidth >= 320 && nativeSourceWidth <= 1200) {
+        document.documentElement.style.setProperty("--native-export-width", `${Math.round(nativeSourceWidth)}px`);
+        document.documentElement.style.setProperty("--native-export-height", `${Math.round(nativeSourceWidth * 4 / 3)}px`);
+      }
+
+      const slideNumber = Number(params.get("slide"));
+      if (Number.isInteger(slideNumber) && slideNumber >= 1) {
+        const selected = slides[slideNumber - 1];
+        if (selected) {
+          document.body.classList.add("exporting");
+          selected.classList.add("is-export");
+        }
+      }
+
+      if (!document.body.classList.contains("exporting")) {
+        bindEditorControls();
+        if (params.get("edit") === "1" || safeGet(MODE_KEY) === "1") {
+          setEditorMode(true);
+        }
+      }
+
+      function bindEditorControls() {
+        document.querySelector("[data-editor-open]")?.addEventListener("click", () => setEditorMode(true));
+        document.querySelector("[data-editor-close]")?.addEventListener("click", () => setEditorMode(false));
+        document.querySelectorAll("[data-export-all]").forEach((button) => {
+          button.addEventListener("click", () => nativeExportSlides());
+        });
+
+        toolbar?.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-edit-command]");
+          if (!button) return;
+          runCommand(button.dataset.editCommand);
+        });
+
+        main.addEventListener("click", (event) => {
+          if (!editorOn) return;
+          const target = event.target.closest("[data-move], [data-editable]");
+          if (target && main.contains(target)) {
+            selectMoveElement(target.closest("[data-move]") || target);
+          }
+        });
+
+        main.addEventListener("input", (event) => {
+          const target = event.target.closest("[data-editable]");
+          if (!target) return;
+          state.text = state.text || {};
+          state.text[target.dataset.editId] = target.innerHTML;
+          saveState();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (!editorOn || !selectedMoveElement || !event.altKey) return;
+          const step = event.shiftKey ? 24 : 8;
+          const moves = {
+            ArrowLeft: [-step, 0],
+            ArrowRight: [step, 0],
+            ArrowUp: [0, -step],
+            ArrowDown: [0, step]
+          };
+          if (!moves[event.key]) return;
+          event.preventDefault();
+          nudge(moves[event.key][0], moves[event.key][1]);
+        });
+      }
+
+      function setEditorMode(on) {
+        editorOn = on;
+        document.body.classList.toggle("editor-on", on);
+        if (toolbar) toolbar.hidden = !on;
+        if (launcher) launcher.hidden = on;
+        editableElements.forEach((element) => {
+          element.contentEditable = on ? "true" : "false";
+          element.spellcheck = false;
+        });
+        if (!on) clearSelection();
+        safeSet(MODE_KEY, on ? "1" : "0");
+      }
+
+      function runCommand(command) {
+        if (command === "download") return downloadCurrentHtml();
+        if (command === "nativeExport") return nativeExportSlides();
+        if (command === "resetAll") {
+          if (window.confirm("确定清空浏览器里保存的文字和位置修改吗？")) {
+            safeRemove(STORAGE_KEY);
+            safeRemove(MODE_KEY);
+            window.location.reload();
+          }
+          return;
+        }
+        if (!selectedMoveElement) {
+          window.alert("先点选要调整的文字、图片或模块。");
+          return;
+        }
+        if (command === "left") nudge(-8, 0);
+        if (command === "right") nudge(8, 0);
+        if (command === "up") nudge(0, -8);
+        if (command === "down") nudge(0, 8);
+        if (command === "bigger") scaleSelected(0.04);
+        if (command === "smaller") scaleSelected(-0.04);
+        if (command === "resetSelected") resetSelectedMove();
+        if (command === "deleteSelected") deleteSelectedElement();
+      }
+
+      async function nativeExportSlides() {
+        clearSelection();
+        const previousEditorMode = editorOn;
+        setEditorMode(false);
+        setExportStatus("正在连接原生导出服务...");
+        try {
+          const response = await fetch("http://127.0.0.1:8765/export", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              html: buildCurrentHtmlSnapshot(),
+              pages: slides.length,
+              sourceWidth: getExportSourceSize(slides[0]).width
+            })
+          });
+          const result = await response.json();
+          if (!response.ok || !result.ok) throw new Error(result.error || "原生导出失败");
+          setExportStatus("原生导出完成");
+          window.alert(`已导出 ${slides.length} 张图片。\n保存位置：\n${result.outputDir}`);
+        } catch (error) {
+          console.error(error);
+          if ((error?.message || "").includes("Failed to fetch")) {
+            setExportStatus("原生服务未连接");
+            window.alert("原生导出服务没有启动。\n\n请先双击 start-xhs-native-export-server.bat，保持弹出的窗口打开，再回到这里点击“原生导出小红书图片”。");
+          } else {
+            setExportStatus("原生导出失败");
+            window.alert(`原生导出失败：\n${error?.message || error}`);
+          }
+        } finally {
+          if (previousEditorMode) setEditorMode(true);
+          setTimeout(() => setExportStatus(""), 5000);
+        }
+      }
+
+      function buildCurrentHtmlSnapshot() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelector("body")?.classList.remove("editor-on", "exporting");
+        clone.querySelector(".edit-toolbar")?.setAttribute("hidden", "");
+        clone.querySelector(".edit-launcher")?.removeAttribute("hidden");
+        clone.querySelectorAll(".is-export").forEach((element) => element.classList.remove("is-export"));
+        clone.querySelectorAll("[contenteditable]").forEach((element) => {
+          element.removeAttribute("contenteditable");
+          element.removeAttribute("spellcheck");
+        });
+        clone.querySelectorAll(".edit-selected").forEach((element) => element.classList.remove("edit-selected"));
+        return `<!doctype html>\n${clone.outerHTML}`;
+      }
+
+      function getExportSourceSize(slide) {
+        const rect = slide.getBoundingClientRect();
+        const width = Math.max(320, Math.round(rect.width || 540));
+        return { width, height: Math.round(width * 4 / 3) };
+      }
+
+      function selectMoveElement(element) {
+        clearSelection();
+        selectedMoveElement = element;
+        selectedMoveElement.classList.add("edit-selected");
+        updateSelectedLabel();
+      }
+
+      function clearSelection() {
+        selectedMoveElement?.classList.remove("edit-selected");
+        selectedMoveElement = null;
+        updateSelectedLabel();
+      }
+
+      function updateSelectedLabel() {
+        if (!selectedLabel) return;
+        if (!selectedMoveElement) {
+          selectedLabel.textContent = "未选择元素";
+          return;
+        }
+        const slide = selectedMoveElement.closest(".slide");
+        const slideIndex = slides.indexOf(slide) + 1;
+        const text = selectedMoveElement.textContent.trim().replace(/\s+/g, " ").slice(0, 18);
+        selectedLabel.textContent = `选中：第${slideIndex}页 ${text || selectedMoveElement.tagName}`;
+      }
+
+      function nudge(dx, dy) {
+        const move = getMove(selectedMoveElement);
+        move.x += dx;
+        move.y += dy;
+        setMove(selectedMoveElement, move);
+      }
+
+      function scaleSelected(delta) {
+        const move = getMove(selectedMoveElement);
+        move.scale = clamp(Number((move.scale + delta).toFixed(2)), 0.72, 1.38);
+        setMove(selectedMoveElement, move);
+      }
+
+      function resetSelectedMove() {
+        const id = selectedMoveElement.dataset.moveId;
+        if (state.moves) delete state.moves[id];
+        applyMove(selectedMoveElement, { x: 0, y: 0, scale: 1 });
+        saveState();
+      }
+
+      function deleteSelectedElement() {
+        const slide = selectedMoveElement.closest(".slide");
+        if (selectedMoveElement.classList.contains("slide") || selectedMoveElement.classList.contains("inner") || selectedMoveElement === slide) {
+          window.alert("不能删除整页。请点选页面里的文字、图片或模块。");
+          return;
+        }
+        if (!window.confirm("确定删除当前选中的内容吗？需要恢复时，可点击“清空修改”。")) return;
+        const id = selectedMoveElement.dataset.moveId;
+        state.deleted = state.deleted || {};
+        state.deleted[id] = true;
+        selectedMoveElement.classList.add("edit-deleted");
+        clearSelection();
+        saveState();
+      }
+
+      function getMove(element) {
+        const saved = state.moves?.[element.dataset.moveId] || {};
+        return {
+          x: Number(saved.x || 0),
+          y: Number(saved.y || 0),
+          scale: Number(saved.scale || 1)
+        };
+      }
+
+      function setMove(element, move) {
+        state.moves = state.moves || {};
+        state.moves[element.dataset.moveId] = move;
+        applyMove(element, move);
+        saveState();
+      }
+
+      function applyMove(element, move) {
+        element.style.setProperty("--edit-x", `${Number(move.x || 0)}px`);
+        element.style.setProperty("--edit-y", `${Number(move.y || 0)}px`);
+        element.style.setProperty("--edit-scale", Number(move.scale || 1));
+      }
+
+      function downloadCurrentHtml() {
+        clearSelection();
+        const blob = new Blob([buildCurrentHtmlSnapshot()], { type: "text/html;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "xhs-dog-body-condition-score-edited.html";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(link.href);
+      }
+
+      function setExportStatus(text) {
+        if (exportStatus) exportStatus.textContent = text;
+      }
+
+      function loadState() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        } catch (error) {
+          return {};
+        }
+      }
+
+      function saveState() {
+        safeSet(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function safeGet(key) {
+        try { return localStorage.getItem(key); } catch (error) { return null; }
+      }
+
+      function safeSet(key, value) {
+        try { localStorage.setItem(key, value); } catch (error) {}
+      }
+
+      function safeRemove(key) {
+        try { localStorage.removeItem(key); } catch (error) {}
+      }
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+    })();
+  </script>
+</body>
+</html>
