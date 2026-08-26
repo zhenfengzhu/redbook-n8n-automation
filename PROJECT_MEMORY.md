@@ -1,6 +1,6 @@
 # Project Memory
 
-Last updated: 2026-07-11
+Last updated: 2026-08-26
 
 ## Project Purpose
 
@@ -14,6 +14,16 @@ The current focus is:
 - Use n8n for scheduling, smoke verification, AI screening, topic generation, and later writing selected topics into a topic database.
 
 The user is working toward becoming or supporting a Xiaohongshu pet health creator. Practical content value matters more than mirroring entire websites.
+
+## Account Strategy Memory
+
+The account's confirmed business constraints, positioning, product-selection priorities, current product hypothesis, compliance boundaries, and unresolved decisions are stored separately in:
+
+```text
+ACCOUNT_MEMORY.md
+```
+
+Read `ACCOUNT_MEMORY.md` before account positioning, content strategy, product selection, supplier evaluation, monetization, or customer-service work. Keep confirmed user decisions separate from recommendations that still require validation.
 
 ## Current Reality
 

@@ -14,6 +14,7 @@ Current working implementation:
 - n8n is installed locally, but no active n8n workflow currently orchestrates the project.
 
 Read `PROJECT_MEMORY.md` before making significant changes.
+Read `ACCOUNT_MEMORY.md` before account positioning, content strategy, product selection, monetization, supplier evaluation, or customer-service work.
 
 ## CodeGraph
 
@@ -40,6 +41,7 @@ D:\AUnityProject\RedBook
 +-- README-local-n8n.md
 +-- 小红书宠物健康选题自动化实施方案.md
 +-- PROJECT_MEMORY.md
++-- ACCOUNT_MEMORY.md
 +-- AGENTS.md
 ```
 
@@ -139,6 +141,7 @@ data\fediaf-cleanup-report.json
 
 When generating, reviewing, or transforming content for Xiaohongshu pet health:
 
+- Treat confirmed account facts and unvalidated product recommendations in `ACCOUNT_MEMORY.md` as different states; do not turn a candidate product into a final user decision.
 - For Xiaohongshu post creation, write the plain text content first and wait for the user's approval before generating HTML, carousel pages, image assets, or exports.
 - Prefer evidence from FEDIAF, WSAVA, AAHA, AVMA, FDA, AAFCO, veterinary universities, and peer-reviewed sources.
 - Preserve source URLs and local evidence paths.
