@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>鲜肉第一位，也可能不是主粮｜小猫饭桌</title>
+  <style>
+    :root {
+      --red: #e83f3f;
+      --red-deep: #b91924;
+      --green: #516c45;
+      --yellow: #ffd96b;
+      --cream: #fffdf8;
+      --ink: #241b17;
+      --muted: #715f57;
+      --shadow: 0 18px 46px rgba(111, 47, 37, .14);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      color: var(--ink);
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 14px 14px, rgba(232, 63, 63, .12) 0 2px, transparent 2.5px),
+        linear-gradient(180deg, #fff7f2, #ffece5);
+      background-size: 28px 28px, auto;
+    }
+    body { padding: 30px; }
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 28px;
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+    figure { margin: 0; }
+    .slide {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      isolation: isolate;
+      border: 1px solid rgba(232, 63, 63, .18);
+      border-radius: 9px;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+    }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(232, 63, 63, .055) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(232, 63, 63, .055) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: linear-gradient(180deg, transparent 0, #000 18%, #000 88%, transparent 100%);
+    }
+    .slide::after {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      width: 200px;
+      height: 200px;
+      right: -88px;
+      top: -88px;
+      border-radius: 50%;
+      background: rgba(255, 217, 107, .72);
+    }
+    .inner {
+      position: absolute;
+      z-index: 1;
+      inset: 30px 32px 27px;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 13px;
+      color: var(--red-deep);
+      font-weight: 900;
+    }
+    .pill, .page-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border: 1.5px solid currentColor;
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+    .page-num {
+      position: absolute;
+      z-index: 8;
+      top: 0;
+      right: 0;
+      min-width: 48px;
+    }
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      max-width: 475px;
+      font-size: 55px;
+      line-height: 1.02;
+      letter-spacing: -3px;
+      font-weight: 950;
+    }
+    h1 .red { color: var(--red-deep); }
+    h2 {
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      font-weight: 950;
+      margin-bottom: 15px;
+    }
+    .cover-sub {
+      margin: 9px 0 16px;
+      color: var(--muted);
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      min-height: 0;
+      flex: 1;
+    }
+    .compare-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
+      border: 2px solid;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 9px 20px rgba(70, 38, 28, .10);
+    }
+    .compare-card.wrong { border-color: var(--red); }
+    .compare-card.right { border-color: var(--green); }
+    .compare-badge {
+      position: absolute;
+      z-index: 5;
+      top: 10px;
+      left: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 30px;
+      padding: 0 10px;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 950;
+      box-shadow: 0 3px 10px rgba(0,0,0,.15);
+    }
+    .wrong .compare-badge { background: var(--red); }
+    .right .compare-badge { background: var(--green); }
+    .compare-photo {
+      position: relative;
+      min-height: 0;
+      flex: 1;
+      overflow: hidden;
+      background: #f2e8df;
+    }
+    .compare-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .photo-top img { object-position: center 27%; }
+    .photo-label img { object-position: center 40%; }
+    .photo-cat img { object-position: 54% center; }
+    .compare-copy {
+      min-height: 78px;
+      padding: 10px 12px 11px;
+      font-size: 15px;
+      line-height: 1.34;
+      font-weight: 750;
+      background: rgba(255,255,255,.98);
+    }
+    .compare-copy strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 17px;
+      color: var(--ink);
+    }
+    .package-note {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-2deg);
+      width: max-content;
+      max-width: 88%;
+      padding: 9px 10px;
+      border: 3px solid;
+      border-radius: 9px;
+      background: rgba(255,255,255,.94);
+      font-size: 15px;
+      line-height: 1.18;
+      text-align: center;
+      font-weight: 950;
+      box-shadow: 0 5px 12px rgba(62, 39, 29, .18);
+    }
+    .package-note.yellow { border-color: var(--red); background: var(--yellow); color: var(--red-deep); }
+    .package-note.green { border-color: var(--green); color: var(--green); }
+    .package-note.red { border-color: var(--red); color: var(--red-deep); }
+    .package-note.small { font-size: 13px; padding: 7px 8px; }
+    .sticker-stack {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      top: 52%;
+      width: 86%;
+      transform: translate(-50%, -50%);
+      display: grid;
+      gap: 7px;
+    }
+    .sticker-stack span {
+      padding: 7px 8px;
+      border: 2px solid var(--red);
+      border-radius: 8px;
+      background: rgba(255, 217, 107, .96);
+      color: var(--red-deep);
+      font-size: 14px;
+      text-align: center;
+      font-weight: 950;
+      box-shadow: 0 4px 10px rgba(0,0,0,.12);
+    }
+    .label-sequence {
+      position: absolute;
+      z-index: 3;
+      inset: 55px 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+    }
+    .label-sequence span {
+      padding: 7px 6px;
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      background: rgba(255,255,255,.94);
+      color: var(--green);
+      font-size: 13px;
+      line-height: 1.15;
+      text-align: center;
+      font-weight: 950;
+    }
+    .label-sequence span + span::before {
+      content: "↓";
+      display: block;
+      height: 8px;
+      margin-top: -13px;
+      margin-bottom: 3px;
+      color: var(--green);
+    }
+    .check-cloud {
+      position: absolute;
+      z-index: 3;
+      inset: 52px 9px 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-content: center;
+      gap: 7px;
+    }
+    .check-cloud span {
+      padding: 7px 4px;
+      border: 2px solid var(--green);
+      border-radius: 7px;
+      background: rgba(255,255,255,.94);
+      color: var(--green);
+      font-size: 12px;
+      line-height: 1.15;
+      text-align: center;
+      font-weight: 950;
+    }
+    .check-cloud span:last-child { grid-column: 1 / -1; }
+    .judgement {
+      margin-top: 12px;
+      padding: 11px 15px;
+      border: 2px solid var(--red-deep);
+      border-radius: 13px;
+      background: var(--yellow);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.3;
+      text-align: center;
+      font-weight: 900;
+    }
+    .judgement strong { color: var(--red-deep); }
+    .action-strip {
+      margin-top: 9px;
+      padding: 8px 12px;
+      border-radius: 9px;
+      background: var(--red-deep);
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      font-weight: 850;
+    }
+    .memory-card {
+      margin-top: 12px;
+      padding: 12px 15px;
+      border: 2px solid var(--red-deep);
+      border-radius: 15px;
+      background: var(--yellow);
+    }
+    .memory-card .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 9px;
+    }
+    .memory-card .steps span {
+      padding: 7px 4px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--red-deep);
+      font-size: 14px;
+      text-align: center;
+      font-weight: 950;
+    }
+    .memory-card p { font-size: 18px; text-align: center; font-weight: 950; }
+    .source-note {
+      margin-top: 7px;
+      color: #837067;
+      font-size: 10px;
+      line-height: 1.25;
+      text-align: center;
+    }
+    .credits {
+      max-width: 1360px;
+      margin: 24px auto 0;
+      color: #80695f;
+      font-size: 13px;
+      text-align: center;
+    }
+    [data-move-id] {
+      --edit-x: 0px;
+      --edit-y: 0px;
+      --edit-scale: 1;
+      transform: translate(var(--edit-x), var(--edit-y)) scale(var(--edit-scale));
+      transform-origin: center;
+    }
+    .package-note[data-move-id] {
+      transform: translate(calc(-50% + var(--edit-x)), calc(-50% + var(--edit-y))) rotate(-2deg) scale(var(--edit-scale));
+    }
+    .edit-ui {
+      position: fixed;
+      z-index: 9999;
+      display: flex;
+      gap: 7px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 9px;
+      border: 1px solid #ddb8aa;
+      border-radius: 10px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+    .edit-launcher { right: 14px; bottom: 14px; }
+    .edit-toolbar { left: 14px; right: 14px; bottom: 14px; }
+    .edit-toolbar[hidden] { display: none; }
+    .edit-ui button {
+      padding: 8px 10px;
+      border: 1px solid #d9b8ac;
+      border-radius: 7px;
+      background: #fff8f4;
+      color: #4a332b;
+      cursor: pointer;
+      font-weight: 750;
+    }
+    .edit-ui button:hover { background: #ffe6de; }
+    .edit-ui .danger { color: var(--red-deep); border-color: var(--red); }
+    .edit-status { font-size: 12px; color: var(--muted); }
+    .edit-selected { outline: 3px dashed #4589ff !important; outline-offset: 3px; }
+    .edit-deleted { display: none !important; }
+    body.editor-on [data-move-id] { cursor: pointer; }
+    body.editor-on [contenteditable="true"] { cursor: text; }
+    body.exporting {
+      width: var(--native-export-width, 540px);
+      height: var(--native-export-height, 720px);
+      padding: 0;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    body.exporting .edit-ui, body.exporting .credits { display: none !important; }
+    body.exporting main {
+      display: block;
+      width: var(--native-export-width, 540px);
+      height: var(--native-export-height, 720px);
+      max-width: none;
+      margin: 0;
+    }
+    body.exporting .slide {
+      display: none;
+      width: var(--native-export-width, 540px);
+      height: var(--native-export-height, 720px);
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    body.exporting .slide.is-export { display: block; }
+    @media (max-width: 620px) {
+      body { padding: 12px; }
+      main { grid-template-columns: 1fr; gap: 18px; }
+      .edit-toolbar { max-height: 42vh; overflow: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="edit-launcher edit-ui">
+    <button type="button" data-export-all>原生导出小红书图片</button>
+    <button type="button" data-editor-open>编辑文字/位置</button>
+  </div>
+  <div class="edit-toolbar edit-ui" hidden>
+    <strong>编辑模式</strong>
+    <button type="button" data-editor-close>预览</button>
+    <button type="button" data-cmd="left">左移</button>
+    <button type="button" data-cmd="right">右移</button>
+    <button type="button" data-cmd="up">上移</button>
+    <button type="button" data-cmd="down">下移</button>
+    <button type="button" data-cmd="bigger">放大</button>
+    <button type="button" data-cmd="smaller">缩小</button>
+    <button type="button" data-cmd="reset">重置选中</button>
+    <button type="button" class="danger" data-cmd="delete">删除选中</button>
+    <button type="button" data-cmd="native">原生导出图片</button>
+    <button type="button" data-cmd="download">下载当前 HTML</button>
+    <button type="button" class="danger" data-cmd="clear">清空修改</button>
+    <span class="edit-status" data-export-status></span>
+    <span class="edit-status" data-selected>未选择元素</span>
+  </div>
+  <main aria-label="鲜肉第一位也可能不是主粮，小红书图文">
+    <article class="slide cover"><section class="inner">
+      <div class="topline"><span class="pill">新手买猫粮最容易漏看</span><span class="page-num">封面</span></div>
+      <h1><span class="red">鲜肉第一位</span><br>也可能不是主粮</h1>
+      <p class="cover-sub">因为你还没看猫粮的“身份证”</p>
+      <div class="compare-grid">
+        <section class="compare-card wrong"><span class="compare-badge">✕ 容易买错</span><figure class="compare-photo photo-top"><img src="assets/xhs-images/cat-food-bag-front.png" alt="无品牌猫粮袋正面示意图"><span class="package-note yellow">鲜肉第一位</span></figure><p class="compare-copy"><strong>只看正面卖点</strong>“用了什么”很诱人，但还不知道它是什么。</p></section>
+        <section class="compare-card right"><span class="compare-badge">✓ 正确顺序</span><figure class="compare-photo photo-top"><img src="assets/xhs-images/cat-food-bag-back.png" alt="无品牌猫粮袋背面示意图"><span class="package-note green">通用名称<br>全价成年期猫粮</span></figure><p class="compare-copy"><strong>先翻到背面</strong>通用名称先告诉你：“它是什么”。</p></section>
+      </div>
+      <div class="judgement">配料表告诉你“用了什么”<br><strong>通用名称先告诉你“它是什么”</strong></div>
+      <div class="action-strip">往后翻｜看懂什么叫先看身份</div>
+    </section></article>
+    <article class="slide"><section class="inner">
+      <div class="topline"><span class="pill">第 1 个动作</span><span class="page-num">01</span></div>
+      <h2>包装正面，<br>最会让你心动</h2>
+      <div class="compare-grid">
+        <section class="compare-card wrong"><span class="compare-badge">✕ 只看卖点</span><figure class="compare-photo photo-top"><img src="assets/xhs-images/cat-food-bag-front.png" alt="包装正面卖点示意图"><div class="sticker-stack"><span>鲜肉第一位</span><span>高蛋白</span><span>营养肉餐包</span></div></figure><p class="compare-copy"><strong>看起来都很好</strong>但还不知道，它到底是什么。</p></section>
+        <section class="compare-card right"><span class="compare-badge">✓ 先翻背面</span><figure class="compare-photo photo-top"><img src="assets/xhs-images/cat-food-bag-back.png" alt="先找通用名称示意图"><span class="package-note green small">先找通用名称<br>再判断能不能当主粮</span></figure><p class="compare-copy"><strong>先确认身份</strong>再看配料、保证值与使用说明。</p></section>
+      </div>
+      <div class="judgement">这些词可以描述产品，<br><strong>却不能单独证明它是全价主粮。</strong></div>
+      <p class="source-note">判断方法示意，不针对任何具体品牌或产品。</p>
+    </section></article>
+    <article class="slide"><section class="inner">
+      <div class="topline"><span class="pill">先看“身份证”</span><span class="page-num">02</span></div>
+      <h2>零食还是主粮？<br>一眼先排除买错</h2>
+      <div class="compare-grid">
+        <section class="compare-card wrong"><span class="compare-badge">✕ 当成主粮</span><figure class="compare-photo photo-top"><img src="assets/xhs-images/cat-treat-pouch.png" alt="无品牌猫用零食袋示意图"><span class="package-note red">通用名称<br>宠物零食（猫用）</span></figure><p class="compare-copy"><strong>用于加餐、奖励</strong>不能单独承担每日完整营养。</p></section>
+        <section class="compare-card right"><span class="compare-badge">✓ 再判断主粮</span><figure class="compare-photo photo-top"><img src="assets/xhs-images/cat-food-bag-back.png" alt="全价成年期猫粮标签示意图"><span class="package-note green">通用名称<br>全价成年期猫粮</span></figure><p class="compare-copy"><strong>健康成年猫按说明饲喂</strong>可作为每日主要营养来源；仍要继续看标签。</p></section>
+      </div>
+      <div class="judgement"><strong>先看它是谁，</strong>再看它用了什么。</div>
+      <p class="source-note">“全价”仍需与适用动物、生命阶段和使用说明一起看。</p>
+    </section></article>
+    <article class="slide"><section class="inner">
+      <div class="topline"><span class="pill">配料不是结论</span><span class="page-num">03</span></div>
+      <h2>配料第一位，<br>只是一条线索</h2>
+      <div class="compare-grid">
+        <section class="compare-card wrong"><span class="compare-badge">✕ 一项定输赢</span><figure class="compare-photo photo-label"><img src="assets/xhs-images/pet-food-label-macro.png" alt="宠物食品配料标签示意图"><span class="package-note red">配料第一位：鸡肉<br>＝ 好粮？</span></figure><p class="compare-copy"><strong>只知道“用了什么”</strong>不能直接推出质量、消化率或营养均衡。</p></section>
+        <section class="compare-card right"><span class="compare-badge">✓ 三处一起看</span><figure class="compare-photo photo-label"><img src="assets/xhs-images/pet-food-label-macro.png" alt="按顺序查看标签示意图"><div class="label-sequence"><span>① 通用名称</span><span>② 原料组成</span><span>③ 添加剂组成</span></div></figure><p class="compare-copy"><strong>先确认身份</strong>再把原料作为理解产品的一部分。</p></section>
+      </div>
+      <div class="judgement">配料表是<strong>“材料单”</strong>，<br>不是整袋粮的“成绩单”。</div>
+      <p class="source-note">原料组成通常按加入重量由高到低排列。</p>
+    </section></article>
+    <article class="slide"><section class="inner">
+      <div class="topline"><span class="pill">别只追一个高分</span><span class="page-num">04</span></div>
+      <h2>粗蛋白高，<br>不等于更适合这只猫</h2>
+      <div class="compare-grid">
+        <section class="compare-card wrong"><span class="compare-badge">✕ 只看一个数</span><figure class="compare-photo photo-label"><img src="assets/xhs-images/pet-food-label-macro.png" alt="只看粗蛋白示意图"><span class="package-note red">粗蛋白<br>越高越好？ ↑</span></figure><p class="compare-copy"><strong>一个数字</strong>不能代表整袋粮，也不等于适合每只猫。</p></section>
+        <section class="compare-card right"><span class="compare-badge">✓ 看完整成绩单</span><figure class="compare-photo photo-cat"><img src="assets/xhs-images/adult-cat-with-scale.png" alt="成年猫和体重秤示意图"><span class="package-note green small">生命阶段＋能量<br>建议喂量＋体况</span></figure><p class="compare-copy"><strong>结合这只猫来判断</strong>还要一起看保证值、使用说明和实际体况。</p></section>
+      </div>
+      <div class="judgement">湿粮、干粮水分差异大，<br><strong>包装百分比不适合直接硬比。</strong></div>
+      <p class="source-note">若持续食欲、排便或体重异常，请结合兽医意见。</p>
+    </section></article>
+    <article class="slide"><section class="inner">
+      <div class="topline"><span class="pill">最后找责任人</span><span class="page-num">05</span></div>
+      <h2>这袋粮，<br>出了问题找得到谁？</h2>
+      <div class="compare-grid">
+        <section class="compare-card wrong"><span class="compare-badge">✕ 只看包装好看</span><figure class="compare-photo photo-top"><img src="assets/xhs-images/cat-food-bag-front.png" alt="只看包装正面示意图"><span class="package-note red">生产信息难找</span></figure><p class="compare-copy"><strong>满版都是营销词</strong>关键信息缺失或模糊，先别急着下单。</p></section>
+        <section class="compare-card right"><span class="compare-badge">✓ 找到责任人</span><figure class="compare-photo photo-label"><img src="assets/xhs-images/pet-food-label-macro.png" alt="完整责任信息标签示意图"><div class="check-cloud"><span>生产企业</span><span>许可/进口登记</span><span>产品标准</span><span>日期与保质期</span><span>联系方式</span></div></figure><p class="compare-copy"><strong>信息能看清、能核对</strong>才知道产品由谁生产、如何联系。</p></section>
+      </div>
+      <div class="memory-card"><div class="steps"><span>① 看身份</span><span>② 看成绩</span><span>③ 找责任人</span></div><p>正面让你心动，背面才让你看懂。</p></div>
+      <div class="action-strip">收藏这套对比｜下次拿起猫粮按图检查</div>
+      <p class="source-note">依据：农业农村部《宠物饲料标签规定》、WSAVA 选粮建议。图片为 AI 生成示意。</p>
+    </section></article>
+  </main>
+  <p class="credits">小猫饭桌｜猫食标签拆解 · 图片为 AI 生成示意，中文标签由排版层添加。</p>
+  <script src="assets/vendor/html2canvas.min.js"></script>
+  <script>
+    (() => {
+      const STORAGE_KEY = "xiaomao-fanzhuo-cat-food-label-v1";
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const toolbar = document.querySelector(".edit-toolbar");
+      const launcher = document.querySelector(".edit-launcher");
+      const selectedText = document.querySelector("[data-selected]");
+      const exportStatus = document.querySelector("[data-export-status]");
+      const editableSelector = "h1,h2,p,.pill,.page-num,.compare-badge,.package-note,.sticker-stack span,.label-sequence span,.check-cloud span,.judgement,.action-strip,.memory-card span";
+      const moveSelector = `${editableSelector},.compare-card,.memory-card`;
+      const state = loadState();
+      let selected = null;
+      document.querySelectorAll(moveSelector).forEach((element, index) => {
+        element.dataset.moveId = element.dataset.moveId || `move-${index + 1}`;
+        const saved = state[element.dataset.moveId];
+        if (saved) applySaved(element, saved);
+      });
+      document.querySelector("[data-editor-open]")?.addEventListener("click", () => setEditor(true));
+      document.querySelector("[data-editor-close]")?.addEventListener("click", () => setEditor(false));
+      document.querySelectorAll("[data-export-all]").forEach((button) => button.addEventListener("click", nativeExport));
+      toolbar?.addEventListener("click", (event) => {
+        const command = event.target.closest("[data-cmd]")?.dataset.cmd;
+        if (!command) return;
+        if (command === "native") return nativeExport();
+        if (command === "download") return downloadHtml();
+        if (command === "clear") {
+          if (confirm("清空所有文字和位置修改？")) { localStorage.removeItem(STORAGE_KEY); location.reload(); }
+          return;
+        }
+        if (!selected) return setStatus("请先点选页面里的元素");
+        const id = selected.dataset.moveId;
+        const current = state[id] || { x: 0, y: 0, scale: 1, html: selected.innerHTML, deleted: false };
+        if (command === "left") current.x -= 3;
+        if (command === "right") current.x += 3;
+        if (command === "up") current.y -= 3;
+        if (command === "down") current.y += 3;
+        if (command === "bigger") current.scale = Math.min(1.4, +(current.scale + .04).toFixed(2));
+        if (command === "smaller") current.scale = Math.max(.7, +(current.scale - .04).toFixed(2));
+        if (command === "reset") Object.assign(current, { x: 0, y: 0, scale: 1, deleted: false });
+        if (command === "delete" && confirm("删除当前选中的内容？可用“清空修改”恢复。")) current.deleted = true;
+        state[id] = current;
+        applySaved(selected, current);
+        persist();
+      });
+      document.addEventListener("click", (event) => {
+        if (!document.body.classList.contains("editor-on") || event.target.closest(".edit-ui")) return;
+        const target = event.target.closest("[data-move-id]");
+        if (!target) return clearSelection();
+        select(target);
+      });
+      document.addEventListener("input", (event) => {
+        const target = event.target.closest("[data-move-id]");
+        if (!target) return;
+        const id = target.dataset.moveId;
+        state[id] = state[id] || { x: 0, y: 0, scale: 1, deleted: false };
+        state[id].html = target.innerHTML;
+        persist();
+      });
+      function setEditor(on) {
+        document.body.classList.toggle("editor-on", on);
+        toolbar.hidden = !on;
+        launcher.style.display = on ? "none" : "flex";
+        document.querySelectorAll(editableSelector).forEach((element) => {
+          if (on) { element.setAttribute("contenteditable", "true"); element.setAttribute("spellcheck", "false"); }
+          else { element.removeAttribute("contenteditable"); element.removeAttribute("spellcheck"); }
+        });
+        if (!on) clearSelection();
+      }
+      function select(element) {
+        clearSelection();
+        selected = element;
+        selected.classList.add("edit-selected");
+        const page = slides.indexOf(element.closest(".slide")) + 1;
+        selectedText.textContent = `选中：第 ${page} 页 ${element.textContent.trim().replace(/\s+/g, " ").slice(0, 16) || element.className}`;
+      }
+      function clearSelection() {
+        selected?.classList.remove("edit-selected");
+        selected = null;
+        if (selectedText) selectedText.textContent = "未选择元素";
+      }
+      function applySaved(element, saved) {
+        element.style.setProperty("--edit-x", `${Number(saved.x || 0)}px`);
+        element.style.setProperty("--edit-y", `${Number(saved.y || 0)}px`);
+        element.style.setProperty("--edit-scale", Number(saved.scale || 1));
+        if (typeof saved.html === "string") element.innerHTML = saved.html;
+        element.classList.toggle("edit-deleted", !!saved.deleted);
+      }
+      function loadState() {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); }
+        catch (_) { return {}; }
+      }
+      function persist() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (_) {} }
+      function setStatus(text) { if (exportStatus) exportStatus.textContent = text; }
+      function currentHtml() {
+        clearSelection();
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelector("body")?.classList.remove("editor-on", "exporting");
+        clone.querySelectorAll("[contenteditable]").forEach((element) => { element.removeAttribute("contenteditable"); element.removeAttribute("spellcheck"); });
+        clone.querySelectorAll(".edit-selected,.is-export").forEach((element) => element.classList.remove("edit-selected", "is-export"));
+        clone.querySelector(".edit-toolbar")?.setAttribute("hidden", "");
+        const launcherClone = clone.querySelector(".edit-launcher");
+        if (launcherClone) launcherClone.style.display = "flex";
+        return "<!doctype html>\n" + clone.outerHTML;
+      }
+      function downloadHtml() {
+        const blob = new Blob([currentHtml()], { type: "text/html;charset=utf-8" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "xiaomao-fanzhuo-cat-food-label-edited.html";
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(link.href), 2000);
+      }
+      async function nativeExport() {
+        setStatus("正在调用 Edge 导出 6 页…");
+        try {
+          const response = await fetch("http://127.0.0.1:8765/export", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ html: currentHtml(), pages: slides.length, sourceWidth: 540 }) });
+          const result = await response.json();
+          if (!response.ok || !result.ok) throw new Error(result.error || "导出失败");
+          setStatus(`完成：${result.outputDir}`);
+          alert(`已导出 ${result.files.length} 张图片\n${result.outputDir}`);
+        } catch (error) {
+          setStatus("原生导出服务未启动");
+          alert("请先双击 start-xhs-native-export-server.bat，保持窗口打开，再点导出。\n\n" + error.message);
+        }
+      }
+      const params = new URLSearchParams(location.search);
+      const slideIndex = Number(params.get("slide"));
+      const sourceWidth = Math.max(320, Math.min(1200, Number(params.get("sourceWidth")) || 540));
+      if (slideIndex >= 1 && slideIndex <= slides.length) {
+        document.documentElement.style.setProperty("--native-export-width", `${sourceWidth}px`);
+        document.documentElement.style.setProperty("--native-export-height", `${Math.round(sourceWidth * 4 / 3)}px`);
+        document.body.classList.add("exporting");
+        slides[slideIndex - 1].classList.add("is-export");
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>小猫饭桌头像尺寸检查</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #f7f3f0; color: #3a2422; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+    main { width: 1400px; min-height: 900px; padding: 62px 72px; }
+    header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 34px; }
+    .kicker { margin-bottom: 8px; color: #c53c39; font-size: 13px; font-weight: 900; letter-spacing: .14em; }
+    h1 { margin: 0; font-size: 34px; }
+    .meta { color: #8d7670; font-size: 14px; line-height: 1.7; text-align: right; }
+    .grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 26px; }
+    .panel { border: 1px solid #eadfd9; border-radius: 22px; background: #fff; box-shadow: 0 14px 38px rgba(69,42,34,.08); }
+    .hero { display: grid; place-items: center; min-height: 575px; padding: 46px; background: linear-gradient(90deg, rgba(240,100,90,.05) 1px, transparent 1px), linear-gradient(0deg, rgba(240,100,90,.05) 1px, transparent 1px), #fff9f3; background-size: 24px 24px; }
+    .crop { width: 455px; height: 455px; overflow: hidden; border-radius: 50%; box-shadow: 0 20px 38px rgba(65,35,31,.18); }
+    .crop img { width: 100%; height: 100%; display: block; }
+    .sizes { padding: 32px; }
+    .sizes h2 { margin: 0 0 8px; font-size: 22px; }
+    .sizes p { margin: 0 0 27px; color: #806d67; font-size: 13px; line-height: 1.6; }
+    .size-row { display: flex; align-items: center; gap: 24px; margin: 24px 0; padding-bottom: 24px; border-bottom: 1px solid #f0e8e4; }
+    .size-row:last-of-type { border-bottom: 0; }
+    .size-row img { display: block; flex: 0 0 auto; }
+    .size-copy b { display: block; margin-bottom: 4px; font-size: 15px; }
+    .size-copy span { color: #937e77; font-size: 12px; }
+    .palette { display: flex; gap: 10px; margin-top: 28px; }
+    .palette i { width: 32px; height: 32px; border: 3px solid #fff; border-radius: 50%; box-shadow: 0 0 0 1px rgba(58,36,34,.16); }
+    .palette i:nth-child(1) { background: #f0645a; }
+    .palette i:nth-child(2) { background: #c53c39; }
+    .palette i:nth-child(3) { background: #ffc96f; }
+    .palette i:nth-child(4) { background: #fff9f3; }
+    footer { display: flex; justify-content: space-between; margin-top: 25px; padding: 18px 22px; border-left: 5px solid #f0645a; border-radius: 9px; background: #fff; color: #725f59; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div><div class="kicker">AVATAR EXPORT QA</div><h1>小猫饭桌 · P2 高清导出检查</h1></div>
+      <div class="meta">透明圆形主稿<br>圆形安全区＋小尺寸辨识度</div>
+    </header>
+    <section class="grid">
+      <div class="panel hero">
+        <div class="crop"><img src="../../xiaomao-fanzhuo-avatar-p2-master.svg" alt="圆形裁切预览"></div>
+      </div>
+      <div class="panel sizes">
+        <h2>实际显示尺寸</h2>
+        <p>检查眼睛、饭碗描边和三颗食物点在缩小后是否仍然清楚。</p>
+        <div class="size-row"><img src="../../xiaomao-fanzhuo-avatar-p2-master.svg" width="160" height="160" alt="160px"><div class="size-copy"><b>160px</b><span>主页放大预览</span></div></div>
+        <div class="size-row"><img src="../../xiaomao-fanzhuo-avatar-p2-master.svg" width="80" height="80" alt="80px"><div class="size-copy"><b>80px</b><span>常规列表头像</span></div></div>
+        <div class="size-row"><img src="../../xiaomao-fanzhuo-avatar-p2-master.svg" width="50" height="50" alt="50px"><div class="size-copy"><b>50px</b><span>小红书主页模拟</span></div></div>
+        <div class="palette"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+    <footer><span>关键元素均位于圆形安全区内</span><span>P2：珊瑚红＋蜜桃黄</span></footer>
+  </main>
+</body>
+</html>

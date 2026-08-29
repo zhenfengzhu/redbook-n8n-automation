@@ -11,3 +11,4 @@ n8n-runtime/*.log
 data/
 __pycache__/
 *.pyc
+.superpowers/

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">小猫饭桌 P2 奶油白方底头像</title>
+  <desc id="desc">奶油白方形背景上的珊瑚红圆形小猫饭碗头像</desc>
+  <rect width="240" height="240" fill="#fff9f3"/>
+  <circle cx="120" cy="120" r="114" fill="#f0645a"/>
+  <circle cx="120" cy="120" r="103.5" fill="none" stroke="#fff9f3" stroke-width="5"/>
+  <path d="M55 111 L70 57 L104 88 Q120 81 136 88 L170 57 L185 111 Z" fill="#fff9f3"/>
+  <rect x="55" y="85" width="130" height="96" rx="56" fill="#fff9f3"/>
+  <path d="M84 118 Q92 111 100 118" fill="none" stroke="#3a2422" stroke-width="6.4" stroke-linecap="round"/>
+  <path d="M140 118 Q148 111 156 118" fill="none" stroke="#3a2422" stroke-width="6.4" stroke-linecap="round"/>
+  <path d="M114 130 Q120 136 126 130" fill="none" stroke="#c53c39" stroke-width="5.4" stroke-linecap="round"/>
+  <path d="M52 145 Q120 126 188 145 L176 194 Q120 217 64 194 Z" fill="#ffc96f" stroke="#c53c39" stroke-width="6.6" stroke-linejoin="round"/>
+  <ellipse cx="120" cy="145" rx="68" ry="17" fill="#ffe0a4" stroke="#c53c39" stroke-width="6.6"/>
+  <circle cx="95" cy="145" r="5" fill="#c53c39"/>
+  <circle cx="117" cy="141" r="5" fill="#c53c39"/>
+  <circle cx="140" cy="146" r="5" fill="#c53c39"/>
+</svg>

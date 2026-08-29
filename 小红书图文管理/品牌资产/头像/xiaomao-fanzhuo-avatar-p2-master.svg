@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="2048" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">小猫饭桌 P2 头像</title>
+  <desc id="desc">珊瑚红圆形背景上的奶油白小猫和蜜桃黄饭碗</desc>
+  <metadata>
+    Account: 小猫饭桌
+    Direction: A 猫耳加饭碗经典正脸
+    Palette: P2 珊瑚红加蜜桃黄
+    Primary: #f0645a
+    Deep outline: #c53c39
+    Bowl: #ffc96f
+    Bowl highlight: #ffe0a4
+    Cream: #fff9f3
+    Ink: #3a2422
+  </metadata>
+
+  <!-- 圆形头像主体；画布四角保持透明，适合平台圆形裁切。 -->
+  <circle cx="120" cy="120" r="114" fill="#f0645a"/>
+  <circle cx="120" cy="120" r="103.5" fill="none" stroke="#fff9f3" stroke-width="5"/>
+
+  <!-- 猫耳和头部。所有关键细节保持在圆形安全区内。 -->
+  <path d="M55 111 L70 57 L104 88 Q120 81 136 88 L170 57 L185 111 Z" fill="#fff9f3"/>
+  <rect x="55" y="85" width="130" height="96" rx="56" fill="#fff9f3"/>
+
+  <!-- 五官使用深暖棕，避免纯黑在柔和配色里过硬。 -->
+  <path d="M84 118 Q92 111 100 118" fill="none" stroke="#3a2422" stroke-width="6.4" stroke-linecap="round"/>
+  <path d="M140 118 Q148 111 156 118" fill="none" stroke="#3a2422" stroke-width="6.4" stroke-linecap="round"/>
+  <path d="M114 130 Q120 136 126 130" fill="none" stroke="#c53c39" stroke-width="5.4" stroke-linecap="round"/>
+
+  <!-- 饭碗描边略加粗，确保 50px 头像下仍然清晰。 -->
+  <path d="M52 145 Q120 126 188 145 L176 194 Q120 217 64 194 Z" fill="#ffc96f" stroke="#c53c39" stroke-width="6.6" stroke-linejoin="round"/>
+  <ellipse cx="120" cy="145" rx="68" ry="17" fill="#ffe0a4" stroke="#c53c39" stroke-width="6.6"/>
+  <circle cx="95" cy="145" r="5" fill="#c53c39"/>
+  <circle cx="117" cy="141" r="5" fill="#c53c39"/>
+  <circle cx="140" cy="146" r="5" fill="#c53c39"/>
+</svg>
